@@ -11,10 +11,11 @@ $ python3 -m venv .venv
 $ . .venv/bin/activate
  ```
 
-- After we have our .venv
+- After we have our .venv install all required dependencies 
 
  ``` 
-$ pip3 install Flask
+$ pip install -r requirements.txt
+
  ```
 
 - Start Flask Server
