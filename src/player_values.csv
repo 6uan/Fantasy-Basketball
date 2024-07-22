@@ -1,0 +1,524 @@
+id,overall,price,player,team
+1,98,122.5,Nikola Jokic,Denver Nuggets
+2,98,122.5,Joel Embiid,Philadelphia 76ers
+3,97,121.25,Luka Doncic,Dallas Mavericks
+4,97,121.25,Giannis Antetokounmpo,Milwaukee Bucks
+5,97,121.25,Shai Gilgeous-Alexander,Oklahoma City Thunder
+6,96,120.0,Jayson Tatum,Boston Celtics
+7,96,120.0,LeBron James,Los Angeles Lakers
+8,96,120.0,Kevin Durant,Phoenix Suns
+9,95,118.75,Stephen Curry,Golden State Warriors
+10,95,118.75,Anthony Davis,Los Angeles Lakers
+11,95,118.75,Anthony Edwards,Minnesota Timberwolves
+12,95,118.75,Devin Booker,Phoenix Suns
+13,94,117.5,Kyrie Irving,Dallas Mavericks
+14,94,117.5,Jalen Brunson,New York Knicks
+15,93,116.25,Jaylen Brown,Boston Celtics
+16,93,116.25,Donovan Mitchell,Cleveland Cavaliers
+17,93,116.25,Ja Morant,Memphis Grizzlies
+18,93,116.25,Jimmy Butler,Miami Heat
+19,92,115.0,Kawhi Leonard,Los Angeles Clippers
+20,91,113.75,Tyrese Haliburton,Indiana Pacers
+21,90,112.5,Pascal Siakam,Indiana Pacers
+22,90,112.5,Domantas Sabonis,Sacramento Kings
+23,89,111.25,Trae Young,Atlanta Hawks
+24,89,111.25,Jamal Murray,Denver Nuggets
+25,89,111.25,Damian Lillard,Milwaukee Bucks
+26,89,111.25,Paolo Banchero,Orlando Magic
+27,89,111.25,Tyrese Maxey,Philadelphia 76ers
+28,89,111.25,Paul George,Philadelphia 76ers
+29,89,111.25,De’Aaron Fox,Sacramento Kings
+30,89,111.25,Victor Wembanyama,San Antonio Spurs
+31,88,110.0,Kristaps Porzingis,Boston Celtics
+32,88,110.0,LaMelo Ball,Charlotte Hornets
+33,88,110.0,Bam Adebayo,Miami Heat
+34,88,110.0,Karl-Anthony Towns,Minnesota Timberwolves
+35,88,110.0,Zion Williamson,New Orleans Pelicans
+36,88,110.0,DeMar DeRozan,Sacramento Kings
+37,87,108.75,Jrue Holiday,Boston Celtics
+38,87,108.75,Derrick White,Boston Celtics
+39,87,108.75,Jaren Jackson Jr.,Memphis Grizzlies
+40,87,108.75,Khris Middleton,Milwaukee Bucks
+41,87,108.75,Rudy Gobert,Minnesota Timberwolves
+42,87,108.75,Dejounte Murray,New Orleans Pelicans
+43,87,108.75,Jalen Williams,Oklahoma City Thunder
+44,86,107.5,Evan Mobley,Cleveland Cavaliers
+45,86,107.5,Jarrett Allen,Cleveland Cavaliers
+46,86,107.5,Cade Cunningham,Detroit Pistons
+47,86,107.5,Alperen Sengun,Houston Rockets
+48,86,107.5,Brandon Ingram,New Orleans Pelicans
+49,86,107.5,Julius Randle,New York Knicks
+50,86,107.5,Chet Holmgren,Oklahoma City Thunder
+51,86,107.5,Franz Wagner,Orlando Magic
+52,86,107.5,Bradley Beal,Phoenix Suns
+53,86,107.5,Lauri Markkanen,Utah Jazz
+54,85,106.25,Aaron Gordon,Denver Nuggets
+55,85,106.25,Jalen Green,Houston Rockets
+56,85,106.25,Fred VanVleet,Houston Rockets
+57,85,106.25,Myles Turner,Indiana Pacers
+58,85,106.25,James Harden,Los Angeles Clippers
+59,85,106.25,Desmond Bane,Memphis Grizzlies
+60,85,106.25,C.J. McCollum,New Orleans Pelicans
+61,85,106.25,Deandre Ayton,Portland Trail Blazers
+62,85,106.25,Scottie Barnes,Toronto Raptors
+63,84,105.0,Michael Porter Jr.,Denver Nuggets
+64,84,105.0,Jalen Suggs,Orlando Magic
+65,83,103.75,Nicolas Claxton,Brooklyn Nets
+66,83,103.75,Cam Thomas,Brooklyn Nets
+67,83,103.75,Zach LaVine,Chicago Bulls
+68,83,103.75,Jalen Duren,Detroit Pistons
+69,83,103.75,Draymond Green,Golden State Warriors
+70,83,103.75,Andrew Nembhard,Indiana Pacers
+71,83,103.75,Ivica Zubac,Los Angeles Clippers
+72,83,103.75,Tyler Herro,Miami Heat
+73,83,103.75,Josh Hart,New York Knicks
+74,83,103.75,Mikal Bridges,New York Knicks
+75,83,103.75,Anfernee Simons,Portland Trail Blazers
+76,83,103.75,Immanuel Quickley,Toronto Raptors
+77,83,103.75,R.J. Barrett,Toronto Raptors
+78,83,103.75,Collin Sexton,Utah Jazz
+79,83,103.75,Jonas Valanciunas,Washington Wizards
+80,83,103.75,Kyle Kuzma,Washington Wizards
+81,82,102.5,Mark Williams,Charlotte Hornets
+82,82,102.5,Brandon Miller,Charlotte Hornets
+83,82,102.5,Coby White,Chicago Bulls
+84,82,102.5,Nikola Vucevic,Chicago Bulls
+85,82,102.5,Darius Garland,Cleveland Cavaliers
+86,82,102.5,Dereck Lively II,Dallas Mavericks
+87,82,102.5,Klay Thompson,Dallas Mavericks
+88,82,102.5,Daniel Gafford,Dallas Mavericks
+89,82,102.5,Jonathan Kuminga,Golden State Warriors
+90,82,102.5,Amen Thompson,Houston Rockets
+91,82,102.5,Austin Reaves,Los Angeles Lakers
+92,82,102.5,D’Angelo Russell,Los Angeles Lakers
+93,82,102.5,Bobby Portis,Milwaukee Bucks
+94,82,102.5,Naz Reid,Minnesota Timberwolves
+95,82,102.5,Herbert Jones,New Orleans Pelicans
+96,82,102.5,OG Anunoby,New York Knicks
+97,82,102.5,Donte DiVincenzo,New York Knicks
+98,82,102.5,Mitchell Robinson,New York Knicks
+99,82,102.5,Wendell Carter Jr.,Orlando Magic
+100,82,102.5,Jusuf Nurkic,Phoenix Suns
+101,82,102.5,Jerami Grant,Portland Trail Blazers
+102,82,102.5,Devin Vassell,San Antonio Spurs
+103,82,102.5,Jakob Poeltl,Toronto Raptors
+104,81,101.25,Clint Capela,Atlanta Hawks
+105,81,101.25,Jalen Johnson,Atlanta Hawks
+106,81,101.25,Onyeka Okongwu,Atlanta Hawks
+107,81,101.25,Al Horford,Boston Celtics
+108,81,101.25,Lonzo Ball,Chicago Bulls
+109,81,101.25,Tobias Harris,Detroit Pistons
+110,81,101.25,Jabari Smith Jr.,Houston Rockets
+111,81,101.25,Obi Toppin,Indiana Pacers
+112,81,101.25,Bennedict Mathurin,Indiana Pacers
+113,81,101.25,Marcus Smart,Memphis Grizzlies
+114,81,101.25,Terry Rozier III,Miami Heat
+115,81,101.25,Brook Lopez,Milwaukee Bucks
+116,81,101.25,Jaden McDaniels,Minnesota Timberwolves
+117,81,101.25,Mike Conley,Minnesota Timberwolves
+118,81,101.25,Trey Murphy III,New Orleans Pelicans
+119,81,101.25,Isaiah Hartenstein,Oklahoma City Thunder
+120,81,101.25,Robert Williams III,Portland Trail Blazers
+121,81,101.25,Deni Avdija,Portland Trail Blazers
+122,81,101.25,Keegan Murray,Sacramento Kings
+123,81,101.25,Malik Monk,Sacramento Kings
+124,81,101.25,Walker Kessler,Utah Jazz
+125,81,101.25,John Collins,Utah Jazz
+126,81,101.25,Malcolm Brogdon,Washington Wizards
+127,80,100.0,De’Andre Hunter,Atlanta Hawks
+128,80,100.0,Bogdan Bogdanovic,Atlanta Hawks
+129,80,100.0,Miles Bridges,Charlotte Hornets
+130,80,100.0,Josh Giddey,Chicago Bulls
+131,80,100.0,P.J. Washington,Dallas Mavericks
+132,80,100.0,Buddy Hield,Golden State Warriors
+133,80,100.0,Dillon Brooks,Houston Rockets
+134,80,100.0,Tari Eason,Houston Rockets
+135,80,100.0,Steven Adams,Houston Rockets
+136,80,100.0,T.J. McConnell,Indiana Pacers
+137,80,100.0,Rui Hachimura,Los Angeles Lakers
+138,80,100.0,Alex Caruso,Oklahoma City Thunder
+139,80,100.0,Luguentz Dort,Oklahoma City Thunder
+140,80,100.0,Kelly Oubre Jr.,Philadelphia 76ers
+141,80,100.0,Shaedon Sharpe,Portland Trail Blazers
+142,80,100.0,Keldon Johnson,San Antonio Spurs
+143,80,100.0,Kelly Olynyk,Toronto Raptors
+144,80,100.0,Tyus Jones,Washington Wizards
+145,80,100.0,Jordan Poole,Washington Wizards
+146,79,98.75,Payton Pritchard,Boston Celtics
+147,79,98.75,Dennis Schroder,Brooklyn Nets
+148,79,98.75,Cameron Johnson,Brooklyn Nets
+149,79,98.75,Ayo Dosunmu,Chicago Bulls
+150,79,98.75,Paul Reed,Detroit Pistons
+151,79,98.75,Ausar Thompson,Detroit Pistons
+152,79,98.75,Jaden Ivey,Detroit Pistons
+153,79,98.75,Andrew Wiggins,Golden State Warriors
+154,79,98.75,Cam Whitmore,Houston Rockets
+155,79,98.75,Aaron Nesmith,Indiana Pacers
+156,79,98.75,Derrick Jones Jr.,Los Angeles Clippers
+157,79,98.75,Norman Powell,Los Angeles Clippers
+158,79,98.75,G.G. Jackson,Memphis Grizzlies
+159,79,98.75,Alec Burks,Miami Heat
+160,79,98.75,Gary Trent Jr.,Milwaukee Bucks
+161,79,98.75,Miles McBride,New York Knicks
+162,79,98.75,Jonathan Isaac,Orlando Magic
+163,79,98.75,Cole Anthony,Orlando Magic
+164,79,98.75,Andre Drummond,Philadelphia 76ers
+165,79,98.75,Grayson Allen,Phoenix Suns
+166,79,98.75,Zach Collins,San Antonio Spurs
+167,79,98.75,Tre Jones,San Antonio Spurs
+168,79,98.75,Chris Paul,San Antonio Spurs
+169,79,98.75,Keyonte George,Utah Jazz
+170,79,98.75,Jordan Clarkson,Utah Jazz
+171,79,98.75,Saddiq Bey,Washington Wizards
+172,79,98.75,Corey Kispert,Washington Wizards
+173,78,97.5,Bojan Bogdanovic,Brooklyn Nets
+174,78,97.5,Nick Richards,Charlotte Hornets
+175,78,97.5,Jalen Smith,Chicago Bulls
+176,78,97.5,Caris LeVert,Cleveland Cavaliers
+177,78,97.5,Russell Westbrook,Denver Nuggets
+178,78,97.5,Simone Fontecchio,Detroit Pistons
+179,78,97.5,De’Anthony Melton,Golden State Warriors
+180,78,97.5,Brandin Podziemski,Golden State Warriors
+181,78,97.5,Trayce Jackson-Davis,Golden State Warriors
+182,78,97.5,Gary Payton II,Golden State Warriors
+183,78,97.5,Kevin Porter Jr.,Los Angeles Clippers
+184,78,97.5,Jarred Vanderbilt,Los Angeles Lakers
+185,78,97.5,Brandon Clarke,Memphis Grizzlies
+186,78,97.5,Vince Williams Jr.,Memphis Grizzlies
+187,78,97.5,Duncan Robinson,Miami Heat
+188,78,97.5,Jaime Jaquez Jr.,Miami Heat
+189,78,97.5,Precious Achiuwa,New York Knicks
+190,78,97.5,Aaron Wiggins,Oklahoma City Thunder
+191,78,97.5,Kentavious Caldwell-Pope,Orlando Magic
+192,78,97.5,Moritz Wagner,Orlando Magic
+193,78,97.5,Kyle Lowry,Philadelphia 76ers
+194,78,97.5,Mason Plumlee,Phoenix Suns
+195,78,97.5,Scoot Henderson,Portland Trail Blazers
+196,78,97.5,Jeremy Sochan,San Antonio Spurs
+197,78,97.5,Harrison Barnes,San Antonio Spurs
+198,78,97.5,Marvin Bagley III,Washington Wizards
+199,77,96.25,Larry Nance Jr.,Atlanta Hawks
+200,77,96.25,Luke Kornet,Boston Celtics
+201,77,96.25,Ben Simmons,Brooklyn Nets
+202,77,96.25,Josh Green,Charlotte Hornets
+203,77,96.25,Grant Williams,Charlotte Hornets
+204,77,96.25,Tre Mann,Charlotte Hornets
+205,77,96.25,Patrick Williams,Chicago Bulls
+206,77,96.25,Max Strus,Cleveland Cavaliers
+207,77,96.25,Isaac Okoro,Cleveland Cavaliers
+208,77,96.25,Dario Saric,Denver Nuggets
+209,77,96.25,Isaiah Stewart,Detroit Pistons
+210,77,96.25,Kevon Looney,Golden State Warriors
+211,77,96.25,Moses Moody,Golden State Warriors
+212,77,96.25,Jock Landale,Houston Rockets
+213,77,96.25,James Wiseman,Indiana Pacers
+214,77,96.25,Isaiah Jackson,Indiana Pacers
+215,77,96.25,Terance Mann,Los Angeles Clippers
+216,77,96.25,Santi Aldama,Memphis Grizzlies
+217,77,96.25,Luke Kennard,Memphis Grizzlies
+218,77,96.25,Nikola Jovic,Miami Heat
+219,77,96.25,Kevin Love,Miami Heat
+220,77,96.25,Nickeil Alexander-Walker,Minnesota Timberwolves
+221,77,96.25,Isaiah Joe,Oklahoma City Thunder
+222,77,96.25,Markelle Fultz,Orlando Magic
+223,77,96.25,Bruce Brown,Toronto Raptors
+224,77,96.25,Taylor Hendricks,Utah Jazz
+225,77,96.25,Talen Horton-Tucker,Utah Jazz
+226,77,96.25,Bilal Coulibaly,Washington Wizards
+227,76,95.0,Sam Hauser,Boston Celtics
+228,76,95.0,Xavier Tillman,Boston Celtics
+229,76,95.0,Day’Ron Sharpe,Brooklyn Nets
+230,76,95.0,Dorian Finney-Smith,Brooklyn Nets
+231,76,95.0,Cody Martin,Charlotte Hornets
+232,76,95.0,Javonte Green,Chicago Bulls
+233,76,95.0,Quentin Grimes,Dallas Mavericks
+234,76,95.0,Dante Exum,Dallas Mavericks
+235,76,95.0,Naji Marshall,Dallas Mavericks
+236,76,95.0,Christian Braun,Denver Nuggets
+237,76,95.0,Peyton Watson,Denver Nuggets
+238,76,95.0,DeAndre Jordan,Denver Nuggets
+239,76,95.0,Chimezie Metu,Detroit Pistons
+240,76,95.0,Kyle Anderson,Golden State Warriors
+241,76,95.0,Nicolas Batum,Los Angeles Clippers
+242,76,95.0,Kris Dunn,Los Angeles Clippers
+243,76,95.0,Christian Wood,Los Angeles Lakers
+244,76,95.0,Scotty Pippen Jr.,Memphis Grizzlies
+245,76,95.0,Derrick Rose,Memphis Grizzlies
+246,76,95.0,Haywood Highsmith,Miami Heat
+247,76,95.0,Josh Richardson,Miami Heat
+248,76,95.0,Taurean Prince,Milwaukee Bucks
+249,76,95.0,Jose Alvarado,New Orleans Pelicans
+250,76,95.0,Cameron Payne,New York Knicks
+251,76,95.0,Cason Wallace,Oklahoma City Thunder
+252,76,95.0,Gordon Hayward,Oklahoma City Thunder
+253,76,95.0,Jaylin Williams,Oklahoma City Thunder
+254,76,95.0,Gary Harris,Orlando Magic
+255,76,95.0,Caleb Martin,Philadelphia 76ers
+256,76,95.0,Robert Covington,Philadelphia 76ers
+257,76,95.0,Eric Gordon,Philadelphia 76ers
+258,76,95.0,Royce O’Neale,Phoenix Suns
+259,76,95.0,Bol Bol,Phoenix Suns
+260,76,95.0,Monte Morris,Phoenix Suns
+261,76,95.0,Dalano Banton,Portland Trail Blazers
+262,76,95.0,Jabari Walker,Portland Trail Blazers
+263,76,95.0,Toumani Camara,Portland Trail Blazers
+264,76,95.0,Duop Reath,Portland Trail Blazers
+265,76,95.0,Trey Lyles,Sacramento Kings
+266,76,95.0,Keon Ellis,Sacramento Kings
+267,76,95.0,Kevin Huerter,Sacramento Kings
+268,76,95.0,Chris Boucher,Toronto Raptors
+269,76,95.0,Gradey Dick,Toronto Raptors
+270,76,95.0,Jordan Nwora,Toronto Raptors
+271,76,95.0,Drew Eubanks,Utah Jazz
+272,75,93.75,Dyson Daniels,Atlanta Hawks
+273,75,93.75,Trendon Watford,Brooklyn Nets
+274,75,93.75,Dennis Smith Jr.,Brooklyn Nets
+275,75,93.75,Noah Clowney,Brooklyn Nets
+276,75,93.75,Lonnie Walker IV,Brooklyn Nets
+277,75,93.75,Reggie Jackson,Charlotte Hornets
+278,75,93.75,Vasilije Micic,Charlotte Hornets
+279,75,93.75,Sam Merrill,Cleveland Cavaliers
+280,75,93.75,Marcus Morris Sr.,Cleveland Cavaliers
+281,75,93.75,Maxi Kleber,Dallas Mavericks
+282,75,93.75,Tim Hardaway Jr.,Detroit Pistons
+283,75,93.75,Malik Beasley,Detroit Pistons
+284,75,93.75,Marcus Sasser,Detroit Pistons
+285,75,93.75,Jeff Green,Houston Rockets
+286,75,93.75,Jarace Walker,Indiana Pacers
+287,75,93.75,Amir Coffey,Los Angeles Clippers
+288,75,93.75,Bones Hyland,Los Angeles Clippers
+289,75,93.75,Mo Bamba,Los Angeles Clippers
+290,75,93.75,Jaxson Hayes,Los Angeles Lakers
+291,75,93.75,Spencer Dinwiddie,Los Angeles Lakers
+292,75,93.75,Gabe Vincent,Los Angeles Lakers
+293,75,93.75,Jordan Goodwin,Memphis Grizzlies
+294,75,93.75,Jake LaRavia,Memphis Grizzlies
+295,75,93.75,Lamar Stevens,Memphis Grizzlies
+296,75,93.75,Danilo Gallinari,Milwaukee Bucks
+297,75,93.75,Delon Wright,Milwaukee Bucks
+298,75,93.75,Daniel Theis,New Orleans Pelicans
+299,75,93.75,Goga Bitadze,Orlando Magic
+300,75,93.75,Anthony Black,Orlando Magic
+301,75,93.75,Kenyon Martin Jr.,Philadelphia 76ers
+302,75,93.75,Josh Okogie,Phoenix Suns
+303,75,93.75,Damion Lee,Phoenix Suns
+304,75,93.75,Matisse Thybulle,Portland Trail Blazers
+305,75,93.75,Jordan McLaughlin,Sacramento Kings
+306,75,93.75,JaVale McGee,Sacramento Kings
+307,75,93.75,Charles Bassey,San Antonio Spurs
+308,75,93.75,Malaki Branham,San Antonio Spurs
+309,75,93.75,Sasha Vezenkov,Toronto Raptors
+310,75,93.75,Richaun Holmes,Washington Wizards
+311,74,92.5,Bruno Fernando,Atlanta Hawks
+312,74,92.5,Seth Curry,Charlotte Hornets
+313,74,92.5,Torrey Craig,Chicago Bulls
+314,74,92.5,Dalen Terry,Chicago Bulls
+315,74,92.5,Jevon Carter,Chicago Bulls
+316,74,92.5,Craig Porter,Cleveland Cavaliers
+317,74,92.5,Ty Jerome,Cleveland Cavaliers
+318,74,92.5,Georges Niang,Cleveland Cavaliers
+319,74,92.5,Tristan Thompson,Cleveland Cavaliers
+320,74,92.5,Jaden Hardy,Dallas Mavericks
+321,74,92.5,Dwight Powell,Dallas Mavericks
+322,74,92.5,Justin Holiday,Denver Nuggets
+323,74,92.5,Malachi Flynn,Detroit Pistons
+324,74,92.5,Evan Fournier,Detroit Pistons
+325,74,92.5,Lindy Waters III,Golden State Warriors
+326,74,92.5,AJ Griffin,Houston Rockets
+327,74,92.5,Aaron Holiday,Houston Rockets
+328,74,92.5,Jae’Sean Tate,Houston Rockets
+329,74,92.5,Ben Sheppard,Indiana Pacers
+330,74,92.5,Trey Jemison,Memphis Grizzlies
+331,74,92.5,Ziaire Williams,Memphis Grizzlies
+332,74,92.5,Thomas Bryant,Miami Heat
+333,74,92.5,MarJon Beauchamp,Milwaukee Bucks
+334,74,92.5,Jae Crowder,Milwaukee Bucks
+335,74,92.5,T.J. Warren,Minnesota Timberwolves
+336,74,92.5,Luka Garza,Minnesota Timberwolves
+337,74,92.5,Joe Ingles,Minnesota Timberwolves
+338,74,92.5,Jordan Hawkins,New Orleans Pelicans
+339,74,92.5,Kenrich Williams,Oklahoma City Thunder
+340,74,92.5,Chuma Okeke,Orlando Magic
+341,74,92.5,Ricky Council IV,Philadelphia 76ers
+342,74,92.5,Thaddeus Young,Phoenix Suns
+343,74,92.5,David Roddy,Phoenix Suns
+344,74,92.5,Kris Murray,Portland Trail Blazers
+345,74,92.5,Cedi Osman,San Antonio Spurs
+346,74,92.5,Sandro Mamukelashvili,San Antonio Spurs
+347,74,92.5,Julian Champagnie,San Antonio Spurs
+348,74,92.5,Ochai Agbaji,Toronto Raptors
+349,74,92.5,Darius Bazley,Utah Jazz
+350,74,92.5,Tristan Vukcevic,Washington Wizards
+351,73,91.25,Cody Zeller,Atlanta Hawks
+352,73,91.25,Sviatoslav Mykhailiuk,Boston Celtics
+353,73,91.25,Oshae Brissett,Boston Celtics
+354,73,91.25,Shake Milton,Brooklyn Nets
+355,73,91.25,Jacob Gilyard,Brooklyn Nets
+356,73,91.25,Nick Smith Jr.,Charlotte Hornets
+357,73,91.25,Taj Gibson,Charlotte Hornets
+358,73,91.25,Chris Duarte,Chicago Bulls
+359,73,91.25,Julian Strawther,Denver Nuggets
+360,73,91.25,Vlatko Cancar,Denver Nuggets
+361,73,91.25,Zeke Nnaji,Denver Nuggets
+362,73,91.25,Usman Garuba,Golden State Warriors
+363,73,91.25,Doug McDermott,Indiana Pacers
+364,73,91.25,Skylar Mays,Los Angeles Lakers
+365,73,91.25,Max Christie,Los Angeles Lakers
+366,73,91.25,Cam Reddish,Los Angeles Lakers
+367,73,91.25,Andre Jackson Jr.,Milwaukee Bucks
+368,73,91.25,Pat Connaughton,Milwaukee Bucks
+369,73,91.25,Jeremiah Robinson-Earl,New Orleans Pelicans
+370,73,91.25,Jericho Sims,New York Knicks
+371,73,91.25,Keita Bates-Diop,New York Knicks
+372,73,91.25,Ousmane Dieng,Oklahoma City Thunder
+373,73,91.25,Bismack Biyombo,Oklahoma City Thunder
+374,73,91.25,Nassir Little,Phoenix Suns
+375,73,91.25,Ish Wainright,Phoenix Suns
+376,73,91.25,Moses Brown,Portland Trail Blazers
+377,73,91.25,Bryce McGowens,Portland Trail Blazers
+378,73,91.25,Blake Wesley,San Antonio Spurs
+379,73,91.25,Dominick Barlow,San Antonio Spurs
+380,73,91.25,Davion Mitchell,Toronto Raptors
+381,73,91.25,Kenneth Lofton Jr.,Utah Jazz
+382,73,91.25,Justin Champagnie,Washington Wizards
+383,73,91.25,Jared Butler,Washington Wizards
+384,72,90.0,Dylan Windler,Atlanta Hawks
+385,72,90.0,Kobe Bufkin,Atlanta Hawks
+386,72,90.0,Vit Krejci,Atlanta Hawks
+387,72,90.0,Garrison Mathews,Atlanta Hawks
+388,72,90.0,Wesley Matthews,Atlanta Hawks
+389,72,90.0,Jalen Wilson,Brooklyn Nets
+390,72,90.0,Devonte’ Graham,Charlotte Hornets
+391,72,90.0,Dean Wade,Cleveland Cavaliers
+392,72,90.0,Damian Jones,Cleveland Cavaliers
+393,72,90.0,Olivier-Maxence Prosper,Dallas Mavericks
+394,72,90.0,Boban Marjanovic,Houston Rockets
+395,72,90.0,Reggie Bullock,Houston Rockets
+396,72,90.0,Brandon Boston Jr.,Los Angeles Clippers
+397,72,90.0,P.J. Tucker,Los Angeles Clippers
+398,72,90.0,Jalen Hood-Schifino,Los Angeles Lakers
+399,72,90.0,John Konchar,Memphis Grizzlies
+400,72,90.0,Patty Mills,Miami Heat
+401,72,90.0,TyTy Washington,Milwaukee Bucks
+402,72,90.0,A.J. Green,Milwaukee Bucks
+403,72,90.0,Matt Ryan,New Orleans Pelicans
+404,72,90.0,Caleb Houstan,Orlando Magic
+405,72,90.0,Cory Joseph,Orlando Magic
+406,72,90.0,Udoka Azubuike,Phoenix Suns
+407,72,90.0,Jalen McDaniels,Sacramento Kings
+408,72,90.0,Colby Jones,Sacramento Kings
+409,72,90.0,Luka Samanic,Utah Jazz
+410,72,90.0,Brice Sensabaugh,Utah Jazz
+411,72,90.0,Kira Lewis Jr.,Utah Jazz
+412,72,90.0,Anthony Gill,Washington Wizards
+413,72,90.0,Patrick Baldwin Jr.,Washington Wizards
+414,72,90.0,Eugene Omoruyi,Washington Wizards
+415,71,88.75,Neemias Queta,Boston Celtics
+416,71,88.75,Jaden Springer,Boston Celtics
+417,71,88.75,Dariq Whitehead,Brooklyn Nets
+418,71,88.75,J.T. Thor,Charlotte Hornets
+419,71,88.75,Julian Phillips,Chicago Bulls
+420,71,88.75,Onuralp Bitim,Chicago Bulls
+421,71,88.75,A.J. Lawson,Dallas Mavericks
+422,71,88.75,Markieff Morris,Dallas Mavericks
+423,71,88.75,Greg Brown,Dallas Mavericks
+424,71,88.75,Jared Rhoden,Detroit Pistons
+425,71,88.75,Gui Santos,Golden State Warriors
+426,71,88.75,Lester Quiñones,Golden State Warriors
+427,71,88.75,Yuta Watanabe,Memphis Grizzlies
+428,71,88.75,Ryan Rollins,Milwaukee Bucks
+429,71,88.75,Stanley Umude,Milwaukee Bucks
+430,71,88.75,Wendell Moore Jr.,Minnesota Timberwolves
+431,71,88.75,Jamal Cain,New Orleans Pelicans
+432,71,88.75,Duane Washington Jr.,New York Knicks
+433,71,88.75,Jett Howard,Orlando Magic
+434,71,88.75,Jeff Dowtin,Philadelphia 76ers
+435,71,88.75,Saben Lee,Phoenix Suns
+436,71,88.75,Sidy Cissoko,San Antonio Spurs
+437,70,87.5,Mouhamed Gueye,Atlanta Hawks
+438,70,87.5,Trent Forrest,Atlanta Hawks
+439,70,87.5,E.J. Liddell,Atlanta Hawks
+440,70,87.5,Drew  Peterson,Boston Celtics
+441,70,87.5,Jordan Walsh,Boston Celtics
+442,70,87.5,Keon Johnson,Brooklyn Nets
+443,70,87.5,Leaky Black,Charlotte Hornets
+444,70,87.5,Isaiah Mobley,Cleveland Cavaliers
+445,70,87.5,Brandon Williams,Dallas Mavericks
+446,70,87.5,Hunter Tyson,Denver Nuggets
+447,70,87.5,Jalen Pickett,Denver Nuggets
+448,70,87.5,Tosan Evbuomwan,Detroit Pistons
+449,70,87.5,Nate Williams,Houston Rockets
+450,70,87.5,James Johnson,Indiana Pacers
+451,70,87.5,Moussa Diabate,Los Angeles Clippers
+452,70,87.5,Kai Jones,Los Angeles Clippers
+453,70,87.5,Kobe Brown,Los Angeles Clippers
+454,70,87.5,Harry Giles III,Los Angeles Lakers
+455,70,87.5,Thanasis Antetokounmpo,Milwaukee Bucks
+456,70,87.5,P.J. Dozier,Minnesota Timberwolves
+457,70,87.5,Leonard Miller,Minnesota Timberwolves
+458,70,87.5,Josh Minott,Minnesota Timberwolves
+459,70,87.5,Daishen Nix,Minnesota Timberwolves
+460,70,87.5,DaQuan Jeffries,New York Knicks
+461,70,87.5,Admiral Schofield,Orlando Magic
+462,70,87.5,Ashton Hagans,Portland Trail Blazers
+463,70,87.5,Rayan Rupert,Portland Trail Blazers
+464,70,87.5,Kessler Edwards,Sacramento Kings
+465,70,87.5,Mason Jones,Sacramento Kings
+466,70,87.5,Alex Len,Sacramento Kings
+467,70,87.5,David Duke Jr.,San Antonio Spurs
+468,70,87.5,Garrett Temple,Toronto Raptors
+469,70,87.5,Javon Freeman-Liberty,Toronto Raptors
+470,70,87.5,Jason Preston,Utah Jazz
+471,70,87.5,Johnny Juzang,Utah Jazz
+472,70,87.5,Jules Bernard,Washington Wizards
+473,70,87.5,Johnny Davis,Washington Wizards
+474,69,86.25,JD Davison,Boston Celtics
+475,69,86.25,Mamadi Diakite,Brooklyn Nets
+476,69,86.25,Amari Bailey,Charlotte Hornets
+477,69,86.25,Jerome Robinson,Golden State Warriors
+478,69,86.25,Kendall Brown,Indiana Pacers
+479,69,86.25,Oscar Tshiebwe,Indiana Pacers
+480,69,86.25,Maxwell Lewis,Los Angeles Lakers
+481,69,86.25,Chris Livingston,Milwaukee Bucks
+482,69,86.25,Kevon Harris,Orlando Magic
+483,69,86.25,Collin Gillespie,Phoenix Suns
+484,69,86.25,Justin Minaya,Portland Trail Blazers
+485,68,85.0,Seth Lundy,Atlanta Hawks
+486,68,85.0,Adama Sanogo,Chicago Bulls
+487,68,85.0,Pete Nance,Cleveland Cavaliers
+488,68,85.0,Emoni Bates,Cleveland Cavaliers
+489,68,85.0,Pat Spencer,Golden State Warriors
+490,68,85.0,Jermaine Samuels Jr.,Houston Rockets
+491,68,85.0,Isaiah Wong,Indiana Pacers
+492,68,85.0,Quenton Jackson,Indiana Pacers
+493,68,85.0,Jordan Miller,Los Angeles Clippers
+494,68,85.0,Jaylen Clark,Minnesota Timberwolves
+495,68,85.0,Malcolm Hill,New Orleans Pelicans
+496,68,85.0,Charles Brown Jr.,New York Knicks
+497,68,85.0,Olivier Sarr,Oklahoma City Thunder
+498,68,85.0,Keyontae Johnson,Oklahoma City Thunder
+499,68,85.0,Terquavion Smith,Philadelphia 76ers
+500,68,85.0,Jalen Slawson,Sacramento Kings
+501,68,85.0,Malik Williams,Toronto Raptors
+502,68,85.0,D.J. Carton,Toronto Raptors
+503,68,85.0,Micah Potter,Utah Jazz
+504,67,83.75,Keaton Wallace,Atlanta Hawks
+505,67,83.75,Jaylen Martin,Brooklyn Nets
+506,67,83.75,Andrew Funk,Chicago Bulls
+507,67,83.75,Henri Drell,Chicago Bulls
+508,67,83.75,Alex Fudge,Dallas Mavericks
+509,67,83.75,Jay Huff,Denver Nuggets
+510,67,83.75,Nate Hinton,Houston Rockets
+511,67,83.75,Xavier Moon,Los Angeles Clippers
+512,67,83.75,Colin Castleton,Los Angeles Lakers
+513,67,83.75,Alondes Williams,Miami Heat
+514,67,83.75,Cole Swider,Miami Heat
+515,67,83.75,Jaylin Galloway,Milwaukee Bucks
+516,67,83.75,Dereon Seabron,New Orleans Pelicans
+517,67,83.75,Jacob Toppin,New York Knicks
+518,67,83.75,Adam Flagler,Oklahoma City Thunder
+519,67,83.75,Trevelin Queen,Orlando Magic
+520,67,83.75,Ibou Badji,Portland Trail Blazers
+521,67,83.75,Jordan Ford,Sacramento Kings
+522,67,83.75,Jamaree Bouyea,San Antonio Spurs
+523,66,82.5,Braxton Key,Denver Nuggets
