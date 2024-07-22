@@ -15,7 +15,13 @@ $ . .venv/bin/activate
 
  ``` 
 $ pip install -r requirements.txt
+$ npm install
+ ```
 
+- Watch for TailwindCSS changes
+
+ ``` 
+$ npm run watch:css
  ```
 
 - Start Flask Server

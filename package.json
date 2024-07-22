@@ -1,5 +1,17 @@
 {
+  "name": "Fantasy-Basketball",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "npx postcss static/css/styles.css -o static/css/tailwind.css",
+    "watch:css": "npx postcss static/css/styles.css -o static/css/tailwind.css --watch"
+  },
   "dependencies": {
-    "@supabase/supabase-js": "^2.44.4"
+    "@supabase/supabase-js": "^2.44.4",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.6"
+  },
+  "devDependencies": {
+    "postcss-cli": "^11.0.0"
   }
 }
