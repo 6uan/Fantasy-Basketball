@@ -13,7 +13,9 @@ def home():
 # route for playerstats page
 @app.route('/playerstats')
 def playerstats():
-    return render_template('pages/playerstats.html')
+    response = supabase.table('playerdata').select('*').execute()
+    player_data = response.data if response.data else []
+    return render_template('pages/playerstats.html', players=player_data)
 
 # route for leaderboards page
 @app.route('/leaderboards')
