@@ -27,5 +27,5 @@ $ npm run watch:css
 - Start Flask Server
 
  ``` 
-$ flask --app main run
+$ python main.py
  ```
