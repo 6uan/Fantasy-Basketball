@@ -9,6 +9,32 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 def home():
     return render_template('index.html')
 
+
+# route for playerstats page
+@app.route('/playerstats')
+def playerstats():
+    return render_template('pages/playerstats.html')
+
+# route for leaderboards page
+@app.route('/leaderboards')
+def leaderboards():
+    return render_template('pages/leaderboards.html')
+
+# route for gameschedule page
+@app.route('/gameschedule')
+def gameschedule():
+    return render_template('pages/gameschedule.html')
+
+# route for gameschedule page
+@app.route('/myteam')
+def myteam():
+    return render_template('pages/myteam.html')
+
+# route for playershop page
+@app.route('/playershop')
+def playershop():
+    return render_template('pages/playershop.html')
+
 # attempt to create login
 # Gets email and password, if user logs in redirect to /home else return 401
 @app.route('/login', methods=['POST'])

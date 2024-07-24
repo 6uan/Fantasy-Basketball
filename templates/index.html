@@ -1,8 +1,13 @@
+<!-- THIS IS OUR LANDING PAGE -->
 <!-- prettier-ignore -->
 {% extends 'base.html' %} 
-{% block title %}Home {% endblock %}
-{% block content %} 
-    {% include 'components/header.html' %}
-    {% include 'components/usernav.html' %} 
-    {% include 'components/content.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<div>
+  <!-- prettier-ignore -->
+  {% include 'components/header.html' %} 
+  {% include 'components/usernav.html' %}
+  {% include 'components/content.html' %}
+</div>
+
 {% endblock %}
