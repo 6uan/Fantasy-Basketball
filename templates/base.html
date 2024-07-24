@@ -10,12 +10,13 @@
     />
   </head>
   <body class="bg-slate-300 text-gray-800 flex flex-col min-h-dvh">
-    {% include 'components/nav.html' %}
-
+    {% include 'components/nav.html' %} {% include 'login_modal.html' %}
     <main class="h-screen overflow-hidden w-full bg-white">
       {% block content %}{% endblock %}
     </main>
 
     <div>{% include 'components/footer.html' %}</div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
   </body>
 </html>
