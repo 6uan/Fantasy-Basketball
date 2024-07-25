@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% block head %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}My Flask App{% endblock %}</title>
+    <title>{% block title %}fantasy-hoops{% endblock %}</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/tailwind.css') }}"
     />
+    {% endblock %}
   </head>
   <body class="bg-slate-300 text-gray-800 flex flex-col min-h-dvh">
-    {% include 'components/nav.html' %} {% include 'login_modal.html' %}
-    <main class="h-screen overflow-hidden w-full bg-white">
-      {% block content %}{% endblock %}
+    <!-- prettier-ignore -->
+    {% block nav %} 
+      {% include 'components/nav.html' %}
+    {% endblock %} 
+    {% block modal %}
+      {% include 'components/login_modal.html' %}
+    {% endblock %}
+    <main class="h-screen w-full bg-white">
+      <!-- prettier-ignore -->
+      {% block content %} 
+        {% include 'index.html' %} 
+      {% endblock %}
     </main>
 
+    {% block footer %}
     <div>{% include 'components/footer.html' %}</div>
+    {% endblock %}
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
   </body>
