@@ -13,7 +13,7 @@ def home():
 # route for playerstats page
 @app.route('/playerstats')
 def playerstats():
-    response = supabase.table('playerdata').select('*').execute()
+    response = supabase.table('players').select('*').execute()
     player_data = response.data if response.data else []
     return render_template('pages/playerstats.html', players=player_data)
 
