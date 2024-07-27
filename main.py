@@ -37,32 +37,52 @@ def myteam():
 def playershop():
     return render_template('pages/playershop.html')
 
-# attempt to create login
-# Gets email and password, if user logs in redirect to /home else return 401
-@app.route('/login', methods=['POST'])
-def login():
-    email = request.form.get('email')
-    password = request.form.get('password')
-    user = supabase.auth.sign_in_with_password({ 'email': email, 'password': password })
-    if user:
-        return redirect(url_for('home'))
-    else:
-        return "Login Failed", 401
 
-@app.route('/signup', methods=['POST'])
-def signup():
+# register and login pages
+@app.route('/register')
+def register():
+    return render_template('pages/register.html')
+
+@app.route('/login')
+def login():
+    return render_template('pages/login.html')
+
+
+# endpoints
+@app.route('/postregister', methods=['POST'])
+def postregister():
     email = request.form.get('email')
     password = request.form.get('password')
     username = request.form.get('username')
-    user = supabase.auth.sign_up({ 
+    session = supabase.auth.sign_up({ 
         'email': email, 
         'password': password, 
         'options': {'data': {'username': username}}  # Store the username in the user's metadata
     })
-    if user:
+    if session:
         return redirect(url_for('home'))
     else:
         return "Sign-up failed", 401
+
+@app.route('/postlogin', methods=['POST'])
+def postlogin():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    session = None # Initialize session
+    # Attempt to sign in with email and password
+    try: 
+        session = supabase.auth.sign_in_with_password({ 'email': email, 'password': password })
+    # If the login fails, print the error message
+    except Exception as e:
+        print(e) # "Invalid login credentials"
+        return redirect(url_for('login')) # Redirect to login page
+    
+    # If the login is successful, redirect to the home page
+    if session:
+        return redirect(url_for('home'))
+    else:
+        return "Login Failed", 401
+
 
 if __name__ == '__main__':
     app.run(debug=True)
