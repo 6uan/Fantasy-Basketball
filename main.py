@@ -53,7 +53,12 @@ def login():
 def signup():
     email = request.form.get('email')
     password = request.form.get('password')
-    user = supabase.auth.sign_up({ 'email': email, 'password': password })
+    username = request.form.get('username')
+    user = supabase.auth.sign_up({ 
+        'email': email, 
+        'password': password, 
+        'options': {'data': {'username': username}}  # Store the username in the user's metadata
+    })
     if user:
         return redirect(url_for('home'))
     else:

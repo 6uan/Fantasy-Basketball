@@ -13,12 +13,14 @@
 
   <div id="cards-container" class="grid grid-cols-5 gap-4">
     {% for player in players %}
-    <div class="card bg-white p-4 rounded shadow border-2">
-      <h2 class="text-xl font-bold">{{ player['display_first_last'] }}</h2>
+    <div class="card bg-white p-4 rounded shadow border-2 h-96">
+      <h1 class="text-xl font-bold">{{ player['display_first_last'] }}</h1>
+      <div class="flex gap-2">
+        <p>{{player['height']}} "</p>
+        <p>{{player['weight']}} lbs</p>
+      </div>
       <p>Team: {{ player['team_name'] }}</p>
       <p>Position: {{ player['position'] }}</p>
-      <p>Height: {{ player['height'] }}</p>
-      <p>Weight: {{ player['weight'] }}</p>
     </div>
     {% endfor %}
   </div>
