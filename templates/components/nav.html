@@ -2,18 +2,20 @@
   <ul class="flex h-14 justify-between items-center">
     <li class="flex items-center gap-5">
       <!-- LINK TO INDEX.HTML -->
-      <a href="/">Home</a>
+      <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl" >Home</a>
       <!-- LINK TO PLAY WITH FRIENDS -->
-      <a href="/">Play With Friends</a>
+      <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Play With Friends</a>
     </li>
-    <li class="flex items-center">
+    <li class="flex items-center gap-5 ">
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
       {% if user_info %}
       <!-- DISPLAY USERNAME OR EMAIL -->
-      <a href="/profile" class="text-black hover:text-slate-900 hover:drop-shadow-2xl">{{ user_info.username or user_info.email }}</a>
+      <a href="/profile" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">{{ user_info.username or user_info.email }}</a>
+      <!-- DISPLAY LOGOUT BUTTON -->
+      <a href="/logout" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Logout</a>
     {% else %}
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
-      <a href="/login" class="text-black hover:text-slate-900 hover:drop-shadow-2xl">Login</a>
+      <a href="/login" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Login</a>
     {% endif %}
       <!-- USER ICON -->
       <span class="ml-5 h-10 w-10 bg-slate-500 border-2 border-slate-600 rounded-full"></span>

@@ -60,6 +60,8 @@ def login():
     return render_template('pages/login.html')
 
 # login endpoints
+
+# triggered on form submit in pages/register.html
 @app.route('/postregister', methods=['POST'])
 def postregister():
     email = request.form.get('email')
@@ -79,21 +81,19 @@ def postregister():
     else:
         return "Sign-up failed", 401
 
+# triggered on form submit in pages/login.html
 @app.route('/postlogin', methods=['POST'])
 def postlogin():
     email = request.form.get('email')
     password = request.form.get('password')
     session_response = None # Initialize session
-    # Attempt to sign in with email and password
+    
     try: 
         session_response = supabase.auth.sign_in_with_password({ 'email': email, 'password': password })
-    # If the login fails, print the error message
-    except Exception as e:
-        print(e) # "Invalid login credentials"
+    except Exception as e: # catches if login fails -> "Invalid login credentials"
         flash("Invalid email or password. Please try again.", "font-semibold text-red-500")
-        return redirect(url_for('login')) # Redirect to login page
+        return redirect(url_for('login')) # Redirect to login.html
     
-    # If the login is successful, redirect to the home page
     if session_response:
         user = session_response.user
         user_info = {
@@ -105,6 +105,12 @@ def postlogin():
     else:
         flash("Login Failed", "error")
         return "Login Failed", 401
+    
+# logout route
+@app.route('/logout')
+def logout():
+    flask_session.pop('user_info', None)
+    return redirect(url_for('home'))    
 
 
 if __name__ == '__main__':
