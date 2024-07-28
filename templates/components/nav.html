@@ -8,7 +8,13 @@
     </li>
     <li class="flex items-center">
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
-       <a href="/register" class="text-black hover:text-slate-900 hover:drop-shadow-2xl">Login</a>
+      {% if user_info %}
+      <!-- DISPLAY USERNAME OR EMAIL -->
+      <a href="/profile" class="text-black hover:text-slate-900 hover:drop-shadow-2xl">{{ user_info.username or user_info.email }}</a>
+    {% else %}
+      <!-- BUTTON TO TRIGGER LOGIN MODAL -->
+      <a href="/login" class="text-black hover:text-slate-900 hover:drop-shadow-2xl">Login</a>
+    {% endif %}
       <!-- USER ICON -->
       <span class="ml-5 h-10 w-10 bg-slate-500 border-2 border-slate-600 rounded-full"></span>
     </li>
