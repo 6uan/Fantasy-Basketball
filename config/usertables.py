@@ -1,11 +1,11 @@
 from supabase_client import supabase
 
 # Function to call the SQL function to create a user-specific table
-def insert_user_table(user_email):
+def insert_user_table(uid):
     
     # Prepare the data to be written
     record = {
-        "user_email": user_email,
+        "uid": uid,
         "total_points": 0,
         "coins": 450,
         "center": "",
@@ -16,74 +16,73 @@ def insert_user_table(user_email):
     }
     response = supabase.table("user_teams").upsert(record).execute()
     if response.data:
-        print(f"Successfully inserted record for user {user_email}")
+        print(f"Successfully inserted record for user {uid}")
     else:
-        print(f"Failed to insert record for user {user_email}: {response.error_message}")
+        print(f"Failed to insert record for user {uid}: {response.error_message}")
 
 
-def add_player(user_email, player_position, player_name):
+def add_player(uid, player_position, person_id):
     # Prepare the data to be written
     record = {
-        player_position: player_name,
+        player_position: person_id,
     }
-    player_price = supabase.table("playervalues").select("price").match({"player": player_name}).execute().data[0]["price"]
-    update_coins(user_email, player_price)
-    response = supabase.table("user_teams").update(record).match({"user_email": user_email}).execute()
+    player_price = supabase.table("playervalues").select("price").match({"person_id": person_id}).execute().data[0]["price"]
+    update_coins(uid, player_price)
+    response = supabase.table("user_teams").update(record).match({"uid": uid}).execute()
     if response.data:
-        print(f"Successfully updated record for user {user_email}")
+        print(f"Successfully updated record for user {uid}")
     else:
-        print(f"Failed to update record for user {user_email}: {response.error_message}")
+        print(f"Failed to update record for user {uid}: {response.error_message}")
 
 
-def remove_player(user_email, player_position, player_name ):
+def remove_player(uid, player_position, person_id ):
     # Prepare the data to be written
     record = {
         player_position: "",
     }
-    player_price = supabase.table("playervalues").select("price").match({"player": player_name}).execute().data[0]["price"]
-    update_coins(user_email, -player_price)
-    response = supabase.table("user_teams").update(record).match({"user_email": user_email}).execute()
+    player_price = supabase.table("playervalues").select("price").match({"person_id": person_id}).execute().data[0]["price"]
+    update_coins(uid, -player_price)
+    response = supabase.table("user_teams").update(record).match({"uid": uid}).execute()
     if response.data:
-        print(f"Successfully updated record for user {user_email}")
+        print(f"Successfully updated record for user {uid}")
     else:
-        print(f"Failed to update record for user {user_email}: {response.error_message}")
+        print(f"Failed to update record for user {uid}: {response.error_message}")
 
 
-def update_coins(user_email, player_price):
+def update_coins(uid, player_price):
     # Prepare the data to be written
-    coins = supabase.table("user_teams").select("coins").match({"user_email": user_email}).execute().data[0]["coins"]
+    coins = supabase.table("user_teams").select("coins").match({"uid": uid}).execute().data[0]["coins"]
     record = {
         "coins": coins - player_price,
     }
-    response = supabase.table("user_teams").update(record).match({"user_email": user_email}).execute()
+    response = supabase.table("user_teams").update(record).match({"uid": uid}).execute()
     if response.data:
-        print(f"Successfully updated record for user {user_email}")
+        print(f"Successfully updated record for user {uid}")
     else:
-        print(f"Failed to update record for user {user_email}: {response.error_message}")
+        print(f"Failed to update record for user {uid}: {response.error_message}")
 
 
-def update_points(user_email, points):
+def update_points(uid, points):
     # Prepare the data to be written
-    total_points = supabase.table("user_teams").select("total_points").match({"user_email": user_email}).execute().data[0]["total_points"]
+    total_points = supabase.table("user_teams").select("total_points").match({"uid": uid}).execute().data[0]["total_points"]
     record = {
         "total_points": total_points + points,
     }
-    response = supabase.table("user_teams").update(record).match({"user_email": user_email}).execute()
+    response = supabase.table("user_teams").update(record).match({"uid": uid}).execute()
     if response.data:
-        print(f"Successfully updated record for user {user_email}")
+        print(f"Successfully updated record for user {uid}")
     else:
-        print(f"Failed to update record for user {user_email}: {response.error_message}")
+        print(f"Failed to update record for user {uid}: {response.error_message}")
 
 
 # # Test insert_user_table function
-# insert_user_table("test@example.com")
+# insert_user_table("34e38f90-1947-4e4d-aa64-28e96ae978df")
 
 # # Test add_player function
-# add_player("test@example.com", "center", "Nikola Jokic")
+# add_player("34e38f90-1947-4e4d-aa64-28e96ae978df", "center", 203999)
 
 # # Test remove_player function
-# remove_player("test@example.com", "center", "Nikola Jokic")
+# remove_player("5062d069-7159-4825-9499-587db7788618", "center", 203999)
 
-# #test update_coins function
-# update_points("test@example.com", 100)
+
 
