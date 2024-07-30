@@ -21,6 +21,8 @@ def inject_user_info():
 # default route for landing page
 @app.route('/')
 def home():
+    print(flask_session)
+    # 518295b1-b9c0-41b0-9748-b2d876d3655f
     return render_template('index.html')
 
 # route for playerstats page
@@ -48,7 +50,9 @@ def myteam():
 # route for playershop page
 @app.route('/playershop')
 def playershop():
-    return render_template('pages/playershop.html')
+    response = supabase.table('teamdata').select('*').execute()
+    team_data = response.data if response.data else []
+    return render_template('pages/playershop.html', teams=team_data)
 
 # register and login pages
 @app.route('/register')
@@ -95,10 +99,12 @@ def postlogin():
         return redirect(url_for('login')) # Redirect to login.html
     
     if session_response:
+        print(session_response)
         user = session_response.user
         user_info = {
             'email': user.email,
-            'username': user.user_metadata.get('username', user.email)
+            'username': user.user_metadata.get('username', user.email),
+            'id': user.id,
         }
         flask_session['user_info'] = user_info
         return redirect(url_for('home'))
