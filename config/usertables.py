@@ -76,14 +76,13 @@ def update_points(uid, points):
 
 
 # # Test insert_user_table function
-insert_user_table("34e38f90-1947-4e4d-aa64-28e96ae978df")
+# insert_user_table("34e38f90-1947-4e4d-aa64-28e96ae978df")
 
 # # Test add_player function
-add_player("34e38f90-1947-4e4d-aa64-28e96ae978df", "center", 203999)
+# add_player("34e38f90-1947-4e4d-aa64-28e96ae978df", "center", 203999)
 
 # # Test remove_player function
 # remove_player("5062d069-7159-4825-9499-587db7788618", "center", 203999)
 
-# #test update_coins function
-# update_points("34e38f90-1947-4e4d-aa64-28e96ae978df", 100)
+
 

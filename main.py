@@ -1,14 +1,27 @@
-from flask import Flask, render_template, request, redirect, url_for
+import os
+from flask import Flask, render_template, request, redirect, url_for, flash, session as flask_session, g
 from config.supabase_client import supabase
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.secret_key = os.environ.get('FLASK_SECRET_KEY')
+
+# runs before every request to get user info
+@app.before_request
+def load_user_info():
+    g.user_info = flask_session.get('user_info', None)
+
+# make user info globally available in all templates
+@app.context_processor
+def inject_user_info():
+    return dict(user_info=g.user_info)
 
 # default route for landing page
 @app.route('/')
 def home():
     return render_template('index.html')
-
 
 # route for playerstats page
 @app.route('/playerstats')
@@ -37,27 +50,68 @@ def myteam():
 def playershop():
     return render_template('pages/playershop.html')
 
-# attempt to create login
-# Gets email and password, if user logs in redirect to /home else return 401
-@app.route('/login', methods=['POST'])
-def login():
-    email = request.form.get('email')
-    password = request.form.get('password')
-    user = supabase.auth.sign_in_with_password({ 'email': email, 'password': password })
-    if user:
-        return redirect(url_for('home'))
-    else:
-        return "Login Failed", 401
+# register and login pages
+@app.route('/register')
+def register():
+    return render_template('pages/register.html')
 
-@app.route('/signup', methods=['POST'])
-def signup():
+@app.route('/login')
+def login():
+    return render_template('pages/login.html')
+
+# login endpoints
+
+# triggered on form submit in pages/register.html
+@app.route('/postregister', methods=['POST'])
+def postregister():
     email = request.form.get('email')
     password = request.form.get('password')
-    user = supabase.auth.sign_up({ 'email': email, 'password': password })
-    if user:
+    username = request.form.get('username')
+    session_response = supabase.auth.sign_up({ 
+        'email': email, 
+        'password': password, 
+        'options': {'data': {'username': username}}  # Store the username in the user's metadata
+    })
+    if session_response:
+        flask_session['user_info'] = {
+            'email': email,
+            'username': username
+        }
         return redirect(url_for('home'))
     else:
         return "Sign-up failed", 401
+
+# triggered on form submit in pages/login.html
+@app.route('/postlogin', methods=['POST'])
+def postlogin():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    session_response = None # Initialize session
+    
+    try: 
+        session_response = supabase.auth.sign_in_with_password({ 'email': email, 'password': password })
+    except Exception as e: # catches if login fails -> "Invalid login credentials"
+        flash("Invalid email or password. Please try again.", "font-semibold text-red-500")
+        return redirect(url_for('login')) # Redirect to login.html
+    
+    if session_response:
+        user = session_response.user
+        user_info = {
+            'email': user.email,
+            'username': user.user_metadata.get('username', user.email)
+        }
+        flask_session['user_info'] = user_info
+        return redirect(url_for('home'))
+    else:
+        flash("Login Failed", "error")
+        return "Login Failed", 401
+    
+# logout route
+@app.route('/logout')
+def logout():
+    flask_session.pop('user_info', None)
+    return redirect(url_for('home'))    
+
 
 if __name__ == '__main__':
     app.run(debug=True)
