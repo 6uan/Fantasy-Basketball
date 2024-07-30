@@ -18,6 +18,7 @@ for item in playervalues_data:
         player_info = players_dict[player_name]
         player_id = player_info['person_id']
         position = player_info['position']
+        team_id = player_info['team_id']
 
         # Prepare the data to be written
         record = {
@@ -26,7 +27,8 @@ for item in playervalues_data:
             "price": item['price'],
             "player": player_name,
             "team": item['team'],
-            "position": position
+            "position": position,
+            "team_id": team_id
         }
 
         response = supabase.table("playervalues").update(record).eq("player", player_name).execute()
