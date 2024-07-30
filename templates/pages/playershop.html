@@ -10,22 +10,29 @@
   <p class="text-center text-2xl font-extralight mt-4 mb-14">
     Select Player by Team!
   </p>
+  <div>
+    <div class="grid grid-cols-6 w-[71%] gap-0 mx-auto">
+      {% for team in teams %}
+      <!-- <h1 class="text-xl font-bold border-2">{{ team['team_name'] }}</h1> -->
+      <div class="relative size-36">
+        <img
+          src="{{ team['team_logo'] }}"
+          alt="{{ team['team_name'] }} logo"
+          class="size-36 object-contain"
+        />
+        <div
+          class="absolute inset-0 flex text-center justify-center items-center bg-black bg-opacity-50 text-white opacity-0 hover:opacity-100 transition-opacity"
+        >
+          {{ team['team_name'] }}
+        </div>
+      </div>
 
-  <div id="cards-container" class="grid grid-cols-5 gap-4">
-    {% for team in teams %}
-    <div class="card bg-white p-4 rounded shadow border-2 h-96">
-      <h1 class="text-xl font-bold">{{ team['team_name'] }}</h1>
-      <img
-        src="{{ team['team_logo'] }}"
-        alt="{{ team['team_name'] }} logo"
-        class="w-full h-40 object-contain"
-      />
-      <p>City: {{ team['team_city'] }}</p>
+      <!-- <p>City: {{ team['team_city'] }}</p>
       <p>State: {{ team['team_state'] }}</p>
-      <p>Founded: {{ team['year_founded'] }}</p>
+      <p>Founded: {{ team['year_founded'] }}</p> -->
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
 
-{% endblock %}
+  {% endblock %}
+</div>

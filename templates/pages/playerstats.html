@@ -11,18 +11,41 @@
     View all Player Stats here!
   </p>
 
-  <div id="cards-container" class="grid grid-cols-5 gap-4">
-    {% for player in players %}
-    <div class="card bg-white p-4 rounded shadow border-2 h-96">
-      <h1 class="text-xl font-bold">{{ player['display_first_last'] }}</h1>
-      <div class="flex gap-2">
-        <p>{{player['height']}} "</p>
-        <p>{{player['weight']}} lbs</p>
-      </div>
-      <p>Team: {{ player['team_name'] }}</p>
-      <p>Position: {{ player['position'] }}</p>
-    </div>
-    {% endfor %}
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border-collapse border border-gray-200">
+      <thead>
+        <tr class="bg-slate-400 border-gray-200 border-b">
+          <th class="py-2 px-4 w-80 border border-gray-500 text-left">
+            Player
+          </th>
+          <th class="py-2 px-4 border border-gray-500 text-left">Height</th>
+          <th class="py-2 px-4 border border-gray-500 text-left">Weight</th>
+          <th class="py-2 px-4 border border-gray-500 text-left">Team</th>
+          <th class="py-2 px-4 border border-gray-500 text-left">Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for player in players %}
+        <tr class="hover:bg-gray-100">
+          <td class="py-2 px-4 border-b border-gray-200 font-bold">
+            {{ player['display_first_last'] }}
+          </td>
+          <td class="py-2 px-4 border-b border-gray-200">
+            {{ player['height'] }} "
+          </td>
+          <td class="py-2 px-4 border-b border-gray-200">
+            {{ player['weight'] }} lbs
+          </td>
+          <td class="py-2 px-4 border-b border-gray-200">
+            {{ player['team_name'] }}
+          </td>
+          <td class="py-2 px-4 border-b border-gray-200">
+            {{ player['position'] }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 </div>
 
