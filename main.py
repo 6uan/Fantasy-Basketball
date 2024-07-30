@@ -25,7 +25,7 @@ def home():
     # 518295b1-b9c0-41b0-9748-b2d876d3655f
     return render_template('index.html')
 
-# route for playerstats page
+# route for playerstats 
 @app.route('/playerstats')
 def playerstats():
     response = supabase.table('players').select('*').execute()
@@ -49,10 +49,25 @@ def myteam():
 
 # route for playershop page
 @app.route('/playershop')
-def playershop():
+def playershopteams():
     response = supabase.table('teamdata').select('*').execute()
     team_data = response.data if response.data else []
-    return render_template('pages/playershop.html', teams=team_data)
+    return render_template('pages/playershopteams.html', teams=team_data)
+
+
+# route for players of a specific team
+@app.route('/playershop/<team_id>')
+def playershop_team(team_id):
+    # Fetch team data
+    team_response = supabase.table('teamdata').select('*').eq('team_id', team_id).execute()
+    team_data = team_response.data[0] if team_response.data else None
+
+    # Fetch players for the specific team
+    players_response = supabase.table('playervalues').select('*').eq('team_id', team_id).execute()
+    players_data = players_response.data if players_response.data else []
+
+    return render_template('pages/playershopteam.html', team=team_data, players=players_data)
+
 
 # register and login pages
 @app.route('/register')

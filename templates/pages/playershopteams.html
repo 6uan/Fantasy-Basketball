@@ -13,23 +13,19 @@
   <div>
     <div class="grid grid-cols-6 w-[71%] gap-0 mx-auto">
       {% for team in teams %}
-      <!-- <h1 class="text-xl font-bold border-2">{{ team['team_name'] }}</h1> -->
-      <div class="relative size-36">
+      <a href="/playershop/{{ team['team_id'] }}" class="relative size-36">
         <img
           src="{{ team['team_logo'] }}"
           alt="{{ team['team_name'] }} logo"
           class="size-36 object-contain"
         />
         <div
-          class="absolute inset-0 flex text-center justify-center items-center bg-black bg-opacity-50 text-white opacity-0 hover:opacity-100 transition-opacity"
+          class="absolute inset-0 font-bold px-2 flex text-center justify-center items-center bg-black bg-opacity-50 text-white opacity-0 hover:opacity-100 transition-opacity"
         >
           {{ team['team_name'] }}
         </div>
-      </div>
+      </a>
 
-      <!-- <p>City: {{ team['team_city'] }}</p>
-      <p>State: {{ team['team_state'] }}</p>
-      <p>Founded: {{ team['year_founded'] }}</p> -->
       {% endfor %}
     </div>
   </div>

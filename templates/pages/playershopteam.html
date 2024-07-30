@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block title %} Player Shop - {{ team['team_name']
+}} {% endblock %} {% block content %} {% include 'components/header.html' %} {%
+include 'components/usernav.html' %}
+
+<div class="container mx-auto justify-center p-10 my-14 overflow-scroll">
+  <h1 class="text-center text-4xl font-black">
+    {{ team['team_name'] }} Players
+  </h1>
+
+  <p class="text-center text-2xl font-extralight mt-4 mb-14">
+    Players of {{ team['team_name'] }}
+  </p>
+
+  <div class="place-content-center grid gap-4 grid-cols-5">
+    {% for player in players %}
+    <div class="rounded-2xl card h-72 w-56 border-2 border-slate-600">
+      <div class="rounded-2xl w-full h-32 bg-slate-50 flex justify-center">
+        <img
+          src="{{ player['person_picture'] }}"
+          alt="{{ team['team_name'] }} logo"
+          class="size-36 object-contain"
+        />
+      </div>
+      <h1 class="font-bold text-center">{{ player ['player']}}</h1>
+      <div class="flex justify-center items-center">
+        <img
+          src="{{ team['team_logo'] }}"
+          alt="{{ team['team_name'] }} logo"
+          class="size-6 object-contain"
+        />
+        <p class="text-center">{{ player['position'] }}</p>
+      </div>
+
+      <div
+        class="flex justify-center items-center mx-5 gap-2 text-sm text-white font-bold py-2"
+      >
+        <button class="w-1/2 p-4 border-2 bg-slate-500 rounded-full">
+          Select
+        </button>
+        <button class="w-1/2 p-4 border-2 bg-slate-500 rounded-full">
+          Favorite
+        </button>
+      </div>
+
+      <p class="text-center">
+        <span>{{ player['overall'] }} OVR</span>
+        <span>{{ player['price'] }} COINS</span>
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
