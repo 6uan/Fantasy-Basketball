@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, flash, session as flask_session, g
 from config.supabase_client import supabase
 from dotenv import load_dotenv
+from config.usertables import get_user_team, update_coins, update_points, remove_player, add_player, insert_user_table
 load_dotenv()
 
 app = Flask(__name__)
@@ -126,13 +127,24 @@ def postlogin():
     else:
         flash("Login Failed", "error")
         return "Login Failed", 401
-    
+
+@app.route('/myteam/<user_id>')
+def show_team(user_id):
+    user_team = get_user_team(user_id)
+    coins = user_team['coins']
+    total_points = user_team['total_points']
+    center = user_team['center']
+    point_guard = user_team['point_guard']
+    shooting_guard = user_team['shooting_guard']
+    power_forward = user_team['power_forward']
+    small_forward = user_team['small_forward']
+    return render_template('pages/myteam.html', points=total_points, coins=coins, center=center, point_guard=point_guard, shooting_guard=shooting_guard, power_forward=power_forward, small_forward=small_forward)
+
 # logout route
 @app.route('/logout')
 def logout():
     flask_session.pop('user_info', None)
     return redirect(url_for('home'))    
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,12 +1,50 @@
-<!-- prettier-ignore -->
 {% extends 'base.html' %} 
 {% block title %} My Team {% endblock %}
 {% block content %}
 {% include 'components/header.html' %} 
 {% include 'components/usernav.html' %}
 
-<h1>My Team</h1>
-<p>Select your time here!</p>
+<div class="container mx-auto p-10 my-14 overflow-scroll">
+  <h1 class="text-center text-4xl font-black">My Team</h1>
+  <p class="text-center text-2xl font-extralight mt-4 mb-4">
+    View my fantasy basketball team here!
+  </p>
+  
+  <div class="text-center text-xl mt-4">
+    <p>Total Points: {{ points }}</p>
+    <p>Total Coins: {{ coins }}</p>
+  </div>
+
+  <table class="table-auto w-full mt-8">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Position</th>
+        <th class="px-4 py-2">Player</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border px-4 py-2">Center</td>
+        <td class="border px-4 py-2">{{ center }}</td>
+      </tr>
+      <tr>
+        <td class="border px-4 py-2">Point Guard</td>
+        <td class="border px-4 py-2">{{ point_guard }}</td>
+      </tr>
+      <tr>
+        <td class="border px-4 py-2">Shooting Guard</td>
+        <td class="border px-4 py-2">{{ shooting_guard }}</td>
+      </tr>
+      <tr>
+        <td class="border px-4 py-2">Power Forward</td>
+        <td class="border px-4 py-2">{{ power_forward }}</td>
+      </tr>
+      <tr>
+        <td class="border px-4 py-2">Small Forward</td>
+        <td class="border px-4 py-2">{{ small_forward }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}
-

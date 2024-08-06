@@ -1,4 +1,4 @@
-from supabase_client import supabase
+from config.supabase_client import supabase
 
 # Function to call the SQL function to create a user-specific table
 def insert_user_table(uid):
@@ -73,6 +73,14 @@ def update_points(uid, points):
         print(f"Successfully updated record for user {uid}")
     else:
         print(f"Failed to update record for user {uid}: {response.error_message}")
+
+def get_user_team(uid):
+    response = supabase.table('user_teams').select('*').eq('uid', uid).execute()
+    if response.data:
+        print(f"Successfully grabbed record for user {uid}")
+    else:
+        print(f"Failed to grab record for user {uid}: {response.error_message}")
+    return response.data[0]
 
 
 # # Test insert_user_table function
