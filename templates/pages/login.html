@@ -4,8 +4,6 @@
 {% extends 'base.html' %} 
 {% block title %} Login {% endblock %}
 {% block content %}
-<!-- {% include 'components/header.html' %} 
-{% include 'components/usernav.html' %} -->
 
 <div class="flex w-full h-full items-center justify-center">
   <!-- MODAL -->
@@ -20,7 +18,7 @@
           id="signupTab"
           class="border-black w-40 text-center cursor-pointer"
         >
-          <a href="/register"> <h1 class="p-3">Sign Up</h1></a>
+          <a href="/register"><h1 class="p-3">Sign Up</h1></a>
         </div>
         <div
           id="loginTab"
@@ -37,8 +35,9 @@
           <label
             for="login_email"
             class="block text-sm font-medium text-gray-700"
-            >Email:</label
           >
+            Email:
+          </label>
           <input
             type="email"
             id="login_email"
@@ -52,8 +51,9 @@
           <label
             for="login_password"
             class="block text-sm font-medium text-gray-700"
-            >Password:</label
           >
+            Password:
+          </label>
           <input
             type="password"
             id="login_password"

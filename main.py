@@ -43,10 +43,47 @@ def leaderboards():
 def gameschedule():
     return render_template('pages/gameschedule.html')
 
-# route for gameschedule page
+# Route for myteam page
 @app.route('/myteam')
 def myteam():
-    return render_template('pages/myteam.html')
+    app.logger.debug('Session: %s', flask_session)
+    if 'user_info' not in flask_session:
+        return redirect(url_for('login'))
+
+    uid = flask_session['user_info'].get('uid')
+    return redirect(url_for('show_team', user_id=uid))
+
+# Route that appends uid to the end of the URL
+@app.route('/myteam/<user_id>')
+def show_team(user_id):
+    user_team = get_user_team(user_id)
+
+    if not user_team:
+        return redirect(url_for('home'))
+
+    if isinstance(user_team, list) and len(user_team) > 0:
+        team = user_team[0]  # Get team record
+
+        return render_template(
+            'pages/myteam.html',
+            points=team.get('total_points'),
+            coins=team.get('coins'),
+            center=team.get('center'),
+            point_guard=team.get('point_guard'),
+            shooting_guard=team.get('shooting_guard'),
+            power_forward=team.get('power_forward'),
+            small_forward=team.get('small_forward')
+        )
+    else:
+        return redirect(url_for('home'))
+
+# Function to retrieve corresponding user team
+def get_user_team(uid):
+    response = supabase.from_('user_teams').select('*').eq('uid', uid).execute()
+    if response and response.data:
+        return response.data
+    else:
+        return None
 
 # route for playershop page
 @app.route('/playershop')
@@ -120,25 +157,13 @@ def postlogin():
         user_info = {
             'email': user.email,
             'username': user.user_metadata.get('username', user.email),
-            'id': user.id,
+            'uid': user.id,
         }
         flask_session['user_info'] = user_info
         return redirect(url_for('home'))
     else:
         flash("Login Failed", "error")
         return "Login Failed", 401
-
-@app.route('/myteam/<user_id>')
-def show_team(user_id):
-    user_team = get_user_team(user_id)
-    coins = user_team['coins']
-    total_points = user_team['total_points']
-    center = user_team['center']
-    point_guard = user_team['point_guard']
-    shooting_guard = user_team['shooting_guard']
-    power_forward = user_team['power_forward']
-    small_forward = user_team['small_forward']
-    return render_template('pages/myteam.html', points=total_points, coins=coins, center=center, point_guard=point_guard, shooting_guard=shooting_guard, power_forward=power_forward, small_forward=small_forward)
 
 # logout route
 @app.route('/logout')

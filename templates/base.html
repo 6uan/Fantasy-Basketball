@@ -11,10 +11,14 @@
     />
     {% endblock %}
   </head>
-  <body class="bg-slate-300 text-gray-800 flex flex-col min-h-dvh">
+  <body class="text-gray-800 flex flex-col min-h-dvh">
     <!-- prettier-ignore -->
     {% block nav %} 
       {% include 'components/nav.html' %}
+    <div class="bg-transparent">
+      {% include 'components/usernav.html' %}
+    </div>
+
     {% endblock %}
     <main class="h-screen w-full bg-white">
       <!-- prettier-ignore -->
