@@ -95,6 +95,7 @@ def get_user_team(uid):
 def playershopteams():
     response = supabase.table('teamdata').select('*').execute()
     team_data = response.data if response.data else []
+    print(team_data)
     return render_template('pages/playershopteams.html', teams=team_data)
 
 
