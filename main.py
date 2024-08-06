@@ -79,7 +79,12 @@ def show_team(user_id):
 
 # Function to retrieve corresponding user team
 def get_user_team(uid):
-    response = supabase.from_('user_teams').select('*').eq('uid', uid).execute()
+    try:
+        response = supabase.from_('user_teams').select('*').eq('uid', uid).execute()
+    except Exception as e:
+        flash("Access token expired. Please login again.", "font-semibold text-red-500")
+        return redirect(url_for('login')) # Redirect to login.html
+    
     if response and response.data:
         return response.data
     else:
@@ -132,6 +137,7 @@ def postregister():
     if session_response:
         flask_session['user_info'] = {
             'email': email,
+            'email_prefix': email.split('@')[0],
             'username': username
         }
         return redirect(url_for('home'))
@@ -156,6 +162,7 @@ def postlogin():
         user = session_response.user
         user_info = {
             'email': user.email,
+            'email_prefix': email.split('@')[0],
             'username': user.user_metadata.get('username', user.email),
             'uid': user.id,
         }
