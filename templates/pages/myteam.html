@@ -1,16 +1,13 @@
-<!-- prettier-ignore -->
-{% extends 'base.html' %}
-{% block title %} My Team {% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %} My Team {% endblock %} {% block
+content %}
 
 <div class="container mx-auto p-6">
-  <h1 class="text-center text-4xl font-black">My Team</h1>
+  <h1 class="p-5 text-center text-4xl font-black">My Team</h1>
 
   <div class="flex justify-center gap-5 text-center text-xl mt-4">
-    <p>Total Points: {{ points }}</p>
-    <p>Total Coins: {{ coins }}</p>
+    <p>Total Points: {{ team.total_points }}</p>
+    <p>Total Coins: {{ team.coins }}</p>
   </div>
-
   <table class="table-auto w-full mt-8">
     <thead>
       <tr>
@@ -20,24 +17,28 @@
     </thead>
     <tbody>
       <tr>
+        <td class="border px-4 py-2">Forward</td>
+        <td class="border px-4 py-2">{{ team.forward or 'N/A' }}</td>
+      </tr>
+      <tr>
         <td class="border px-4 py-2">Center</td>
-        <td class="border px-4 py-2">{{ center }}</td>
+        <td class="border px-4 py-2">{{ team.center or 'N/A' }}</td>
       </tr>
       <tr>
-        <td class="border px-4 py-2">Point Guard</td>
-        <td class="border px-4 py-2">{{ point_guard }}</td>
+        <td class="border px-4 py-2">Guard Forward</td>
+        <td class="border px-4 py-2">{{ team.guard_forward or 'N/A' }}</td>
       </tr>
       <tr>
-        <td class="border px-4 py-2">Shooting Guard</td>
-        <td class="border px-4 py-2">{{ shooting_guard }}</td>
+        <td class="border px-4 py-2">Forward Guard</td>
+        <td class="border px-4 py-2">{{ team.forward_guard or 'N/A' }}</td>
       </tr>
       <tr>
-        <td class="border px-4 py-2">Power Forward</td>
-        <td class="border px-4 py-2">{{ power_forward }}</td>
+        <td class="border px-4 py-2">Forward Center</td>
+        <td class="border px-4 py-2">{{ team.forward_center or 'N/A' }}</td>
       </tr>
       <tr>
-        <td class="border px-4 py-2">Small Forward</td>
-        <td class="border px-4 py-2">{{ small_forward }}</td>
+        <td class="border px-4 py-2">Center Forward</td>
+        <td class="border px-4 py-2">{{ team.center_forward or 'N/A' }}</td>
       </tr>
     </tbody>
   </table>

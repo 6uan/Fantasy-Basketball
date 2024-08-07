@@ -2,16 +2,19 @@
   <ul class="flex h-14 justify-between items-center w-7/12">
     <li class="flex items-center gap-5">
       <!-- HEADER -->
-       <div class="flex items-center gap-1">
-         {% include 'components/basketball.html' %} 
-         <div class="flex flex-col justify-center">
-           <h1 class="text-sm leading-[14px]">Fantasy</h1>
-           <h1 class="font-black leading-[14px]">Hoops</h1>
-         </div>
+       <div class="flex items-center">
+
+         <a href="/" class="flex gap-1">
+           {% include 'components/basketball.html' %} 
+          <div class="flex flex-col justify-center">
+            <h1 class="text-sm leading-[14px]">Fantasy</h1>
+          <h1 class="font-black leading-[14px]">Hoops</h1>
+        </div>
+      </a>
         <div class="ml-4 h-5 w-px bg-black mx-2"></div>
        </div>
       <!-- LINK TO INDEX.HTML -->
-      <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl" >Home</a>
+      <!-- <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl" >Home</a> -->
       <!-- LINK TO PLAY WITH FRIENDS -->
       <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Play With Friends</a>
     </li>

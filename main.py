@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for, flash, session as flask_session, g
+from flask import Flask, render_template, request, redirect, url_for, flash, session as flask_session, g, jsonify
 from config.supabase_client import supabase
 from dotenv import load_dotenv
 from config.usertables import get_user_team, update_coins, update_points, remove_player, add_player, insert_user_table
@@ -63,17 +63,8 @@ def show_team(user_id):
 
     if isinstance(user_team, list) and len(user_team) > 0:
         team = user_team[0]  # Get team record
-
-        return render_template(
-            'pages/myteam.html',
-            points=team.get('total_points'),
-            coins=team.get('coins'),
-            center=team.get('center'),
-            point_guard=team.get('point_guard'),
-            shooting_guard=team.get('shooting_guard'),
-            power_forward=team.get('power_forward'),
-            small_forward=team.get('small_forward')
-        )
+        print("now printing my team", team)
+        return render_template('pages/myteam.html', team = team)
     else:
         return redirect(url_for('home'))
 
@@ -112,6 +103,58 @@ def playershop_team(team_id):
 
     return render_template('pages/playershopteam.html', team=team_data, players=players_data)
 
+
+# logic to add player to team ( IN PROGRESS )
+@app.route('/add-to-team', methods=['POST'])
+def add_to_team():
+    data = request.json
+    player_id = data.get('playerId')
+    player_position = data.get('playerPosition').lower()  # Convert to lowercase
+    player_price = float(data.get('playerPrice'))
+    user_id = flask_session.get('user_info', {}).get('uid')
+
+    app.logger.debug(f'Received request to add player: {player_id}, Position: {player_position}, Price: {player_price}, User ID: {user_id}')
+
+    if not user_id:
+        app.logger.error('User not authenticated')
+        return jsonify({'message': 'User not authenticated'}), 401
+
+    try:
+        # Fetch the user's current team and coins
+        user_response = supabase.from_('user_teams').select('*').eq('uid', user_id).single().execute()
+        app.logger.debug(f'User team response: {user_response}')
+
+        if not user_response.data:
+            app.logger.error('User team not found')
+            return jsonify({'message': 'User team not found'}), 404
+
+        user_team = user_response.data
+        current_coins = user_team.get('coins', 0)
+        app.logger.debug(f'Current coins: {current_coins}')
+
+        # Check if the user can afford the player
+        if current_coins < player_price:
+            app.logger.error('Not enough coins')
+            return jsonify({'message': 'Not enough coins'}), 400
+
+        # Update the user's team and coins
+        update_data = {
+            player_position: player_id,
+            'coins': current_coins - player_price
+        }
+
+        response = supabase.from_('user_teams').update(update_data).eq('uid', user_id).execute()
+        app.logger.debug(f'Update response: {response}')
+
+        if response.data:
+            return jsonify({'message': 'Player added to your team successfully'}), 200
+        else:
+            app.logger.error('Failed to add player to your team')
+            return jsonify({'message': 'Failed to add player to your team', 'details': response.error}), 400
+
+    except Exception as e:
+        app.logger.error(f'Error adding player to team: {e}')
+        return jsonify({'message': 'Internal server error'}), 500
 
 # register and login pages
 @app.route('/register')

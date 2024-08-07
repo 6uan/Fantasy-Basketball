@@ -1,15 +1,56 @@
-function loadContent(url, title) {
-  fetch(url)
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("content-container").innerHTML = data;
-      history.pushState(null, "", url);
-      document.title = title;
-    })
-    .catch((error) => console.error("Error:", error));
-}
+console.log('Working')
 
-// Handle back/forward button
-window.onpopstate = function (event) {
-  loadContent(location.pathname, document.title);
-};
+// waits for the DOM to load before running the code inside
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM fully loaded and parsed')
+  // Get all the select buttons (player options)
+  const selectButtons = document.querySelectorAll('.select-button')
+  console.log('Select buttons found:', selectButtons.length)
+
+  // Function to add the selected class
+  function selectPlayer(button) {
+    console.log('Selecting player')
+    button.classList.add('bg-slate-600')
+  }
+
+  selectButtons.forEach((button) => {
+    button.addEventListener('click', async (e) => {
+      console.log('Select button clicked')
+      const playerId = e.target.dataset.playerId
+      let playerPosition = e.target.dataset.playerPosition
+      const playerPrice = e.target.dataset.playerPrice
+      // Replace hyphens with underscores in playerPosition
+      playerPosition = playerPosition.replace(/-/g, '_')
+
+      console.log(
+        `Player ID: ${playerId}, Position: ${playerPosition}, Price: ${playerPrice}`,
+      )
+
+      try {
+        const response = await fetch('/add-to-team', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ playerId, playerPosition, playerPrice }),
+        })
+
+        console.log('Response status:', response.status)
+
+        if (response.ok) {
+          console.log('Player added successfully')
+          alert('Player added to your team!')
+          selectPlayer(e.target) // Call the function to add the selected class
+        } else {
+          console.log('Response not OK')
+          const result = await response.json()
+          console.log('Response JSON:', result)
+          alert(`Failed to add player to your team: ${result.message}`)
+        }
+      } catch (error) {
+        console.error('Error in fetch request:', error)
+        alert('An unexpected error occurred.')
+      }
+    })
+  })
+})
