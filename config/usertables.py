@@ -9,10 +9,11 @@ def insert_user_table(uid):
         "total_points": 0,
         "coins": 450,
         "center": "",
-        "point_guard": "",
-        "shooting_guard": "",
-        "power_forward": "",
-        "small_forward": "",
+        "guard": "",
+        "forward_center": "",
+        "forward": "",
+        "guard_forward": "",
+        "forward_guard": "",
     }
     response = supabase.table("user_teams").upsert(record).execute()
     if response.data:
@@ -67,6 +68,16 @@ def update_points(uid, points):
     total_points = supabase.table("user_teams").select("total_points").match({"uid": uid}).execute().data[0]["total_points"]
     record = {
         "total_points": total_points + points,
+    }
+    response = supabase.table("user_teams").update(record).match({"uid": uid}).execute()
+    if response.data:
+        print(f"Successfully updated record for user {uid}")
+    else:
+        print(f"Failed to update record for user {uid}: {response.error_message}")
+
+def update_matchday_points(uid, points):
+    record = {
+        "points_matchday": points,
     }
     response = supabase.table("user_teams").update(record).match({"uid": uid}).execute()
     if response.data:
