@@ -1,49 +1,80 @@
 <!-- prettier-ignore -->
 {% extends 'base.html' %}
- {% block title %} My Team {% endblock %}
+{% block title %} My Team {% endblock %}
 {% block content %}
 
 <div class="container mx-auto p-6">
-  <h1 class="p-5 text-center text-4xl font-black">My Team</h1>
+  <h1 class="p-5 text-center text-4xl font-semibold font-kanit">My Team</h1>
 
   <div class="flex justify-center gap-5 text-center text-xl mt-4">
     <p>Total Points: {{ team.total_points }}</p>
     <p>Total Coins: {{ team.coins }}</p>
   </div>
-  <table class="table-auto w-full mt-8">
-    <thead>
-      <tr>
-        <th class="px-4 py-2">Position</th>
-        <th class="px-4 py-2">Player</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="border px-4 py-2">Forward</td>
-        <td class="border px-4 py-2">{{ team.forward or 'N/A' }}</td>
-      </tr>
-      <tr>
-        <td class="border px-4 py-2">Center</td>
-        <td class="border px-4 py-2">{{ team.center or 'N/A' }}</td>
-      </tr>
-      <tr>
-        <td class="border px-4 py-2">Guard Forward</td>
-        <td class="border px-4 py-2">{{ team.guard_forward or 'N/A' }}</td>
-      </tr>
-      <tr>
-        <td class="border px-4 py-2">Forward Guard</td>
-        <td class="border px-4 py-2">{{ team.forward_guard or 'N/A' }}</td>
-      </tr>
-      <tr>
-        <td class="border px-4 py-2">Forward Center</td>
-        <td class="border px-4 py-2">{{ team.forward_center or 'N/A' }}</td>
-      </tr>
-      <tr>
-        <td class="border px-4 py-2">Center Forward</td>
-        <td class="border px-4 py-2">{{ team.center_forward or 'N/A' }}</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <div class="grid grid-cols-3 gap-6 mx-auto pt-14 w-[65%]">
+    {% for position, player in players.items() %}
+    <div class="rounded-2xl border-2 p-4 shadow-sm bg-slate-100 text-slate-600">
+      <h2 class="text-center text-2xl font-semibold">
+        {{ position.replace('_', ' ').title() }}
+      </h2>
+      <div
+        class="rounded-2xl card h-72 w-56 border-2 shadow-sm bg-slate-300 text-slate-600 mx-auto"
+      >
+        <!-- player picture -->
+        <div
+          class="rounded-t-[14px] w-full h-[124px] bg-slate-50 flex justify-center"
+        >
+          <img
+            src="{{ player.person_picture }}"
+            alt="{{ teams[player.team_id].team_name }} logo"
+            class="size-36 object-contain"
+          />
+        </div>
+
+        <!-- player name -->
+        <h1 class="font-black text-center pt-3">{{ player.player }}</h1>
+        <div class="flex justify-center items-center my-2">
+          <img
+            src="{{ teams[player.team_id].team_logo }}"
+            alt="{{ teams[player.team_id].team_name }} logo"
+            class="size-6 object-contain"
+          />
+          <p class="text-center">
+            <span>{{ player.position }}</span>
+            ·
+            <span>{{ player.overall }} OVR</span>
+          </p>
+        </div>
+
+        <!-- container for select and favorite button  -->
+        <div
+          class="flex justify-center h-10 items-center mx-5 my-2 gap-2 text-sm text-white font-bold py-2"
+        >
+          <button
+            class="flex items-center w-1/2 p-4 h-5 bg-slate-400 border-slate-600 border-2 hover:bg-slate-600 rounded-lg select-button"
+            data-player-id="{{ player.person_id }}"
+            data-player-position="{{ player.position }}"
+            data-player-price="{{ player.price }}"
+          >
+            Select
+          </button>
+          <button
+            class="flex items-center w-1/2 h-5 p-4 border-2 bg-slate-400 border-slate-600 hover:bg-slate-600 rounded-lg"
+          >
+            Favorite
+          </button>
+        </div>
+
+        <p class="text-center">
+          <span class="text-xl font-black">{{ player.price }}</span>
+          <span class="size-6 mb-2 inline-block align-middle">
+            {% include 'components/gem.html' %}
+          </span>
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% endblock %}
