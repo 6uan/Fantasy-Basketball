@@ -51,6 +51,13 @@
       {% if user_info %}
       <div class="flex gap-1 p-2 rounded-md items-center hover:backdrop-blur-sm">
           <p class="text-lg font-kanit font-light hover:font-normal leading-[14px] coin-balance">
+              {{ user_info.user_team.total_points }}
+          </p>
+          <span class="size-6 mt-1">
+              {% include 'components/points.html' %}
+          </span>
+          <div class="w-2"></div>
+          <p class="text-lg font-kanit font-light hover:font-normal leading-[14px] coin-balance">
               {{ user_info.user_team.coins }}
           </p>
           <span class="size-5">
