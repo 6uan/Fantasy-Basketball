@@ -20,21 +20,8 @@
       <!-- LINK TO INDEX.HTML -->
       <!-- <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl" >Home</a> -->
       <!-- LINK TO PLAY WITH FRIENDS -->
-      <a href="/" class="font-kanit font-light text-slate-600 hover:font-normal hover:drop-shadow-2xl">Play With Friends</a>
+      <a href="/" class="font-kanit text-lg font-light text-slate-600 hover:font-normal hover:drop-shadow-2xl">Play With Friends</a>
 
-
-      <div class="flex items-center p-1 gap-2 font-kanit font-light">
-        <!-- LINK TO RESET MATCHDAY -->
-      <button id="reset-matchday-button" class="size-5 cursor-pointer"> 
-        {% include 'components/restart.html' %}
-      </button>
-      <p id="matchday"> Restart Simulation </p>
-    <!--LINK TO MATCHDAY-->
-    <button class="size-5 cursor-pointer" id="increment-matchday-button">
-      {% include 'components/arrowright.html' %}
-      </button>
-    <p id="matchday"> Simulate 5 Games {{ matchday }} </p>
-</div>  
     </li>
     <li class="flex items-center gap-5 ">
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
@@ -42,29 +29,29 @@
        <!-- USER INFO CONTAINER -->
        <div class="relative group cursor-pointer">
         <!-- USERNAME OR EMAIL -->
-         <div class="hover:text-black w-40 hover:drop-shadow-2xl block group-hover:hidden text-right">
-           <p class="text-slate-600 font-bold">{{ user_info.email_prefix or user_info.username }}</p>
+         <div class="hover:text-black w-40 hover:drop-shadow-2xl block text-right">
+           <p class="text-slate-600 text-lg font-kanit font-light hover:font-normal group-hover:hidden">{{ user_info.email_prefix or user_info.username }}</p>
          </div>
         <!-- LOGOUT BUTTON -->
-         <div class="hidden group-hover:block w-40 hover:text-black hover:drop-shadow-2xl text-right">
-            <a href="/logout" class="text-slate-600">Logout</a>
+         <div class="hidden text-lg group-hover:block w-40 hover:font-normal hover:drop-shadow-2xl text-right">
+            <a href="/logout" class=" text-slate-600 font-kanit">Logout</a>
          </div>
       </div>
     {% else %}
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
-      <a href="/login" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Login</a>
+      <a href="/login" class="text-slate-600 font-light font-kanit border-2 hover:bg-slate-500 hover:text-white border-slate-700 rounded-lg px-3 py-0.5">Login</a>
     {% endif %}
       <!-- USER Coins -->
       {% if user_info %}
       <div class="flex gap-1 p-2 rounded-md items-center hover:backdrop-blur-sm">
-          <p class="text-lg font-kanit font-light hover:font-normal leading-[14px] coin-balance">
+          <p class="text-lg text-slate-600  font-kanit font-light hover:font-normal leading-[14px] coin-balance">
               {{ user_info.user_team.total_points }}
           </p>
-          <span class="size-6 mt-1">
+          <span class="size-6">
               {% include 'components/points.html' %}
           </span>
           <div class="w-2"></div>
-          <p class="text-lg font-kanit font-light hover:font-normal leading-[14px] coin-balance">
+          <p class="text-lg text-slate-600 font-kanit font-light hover:font-normal leading-[14px] coin-balance">
               {{ user_info.user_team.coins }}
           </p>
           <span class="size-5">
@@ -76,23 +63,4 @@
     </li>
   </ul>
 </nav>
-<script>
-  document.getElementById("increment-matchday-button").addEventListener("click", function() {
-      fetch('/increment-matchday', {
-          method: 'POST'
-      })
-      .then(response => response.json())
-      .then(data => {
-          document.getElementById("matchday").innerText = `GAME: ${data.matchday}`;
-      });
-  });
-  document.getElementById("reset-matchday-button").addEventListener("click", function() {
-    fetch('/reset-matchday', {
-      method: 'POST'
-    })
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("matchday").innerText = `Matchday ${data.matchday}`;
-    });
-  });
-</script>
+
