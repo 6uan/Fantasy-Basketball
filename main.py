@@ -4,10 +4,10 @@ from config.supabase_client import supabase
 from dotenv import load_dotenv
 from config.usertables import get_user_team, update_coins, update_points, remove_player, add_player, insert_user_table
 from config.matchday import process_games
+from config.auth import postregister, postlogin
 load_dotenv()
 
 app = Flask(__name__)
-app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 current_matchday = 1
 
@@ -24,17 +24,20 @@ def inject_user_info():
 # default route for landing page
 @app.route('/')
 def home():
+    print("flask session")
     print(flask_session)
+    print("end")
     global current_matchday
     # 518295b1-b9c0-41b0-9748-b2d876d3655f
     return render_template('index.html', matchday=current_matchday)
 
 @app.route('/increment-matchday', methods=['POST'])
 def increment_matchday():
-    global matchday
+    global current_matchday
     try:
-        matchday += 1
-        return jsonify({'matchday': matchday})
+        current_matchday += 1
+        process_games(current_matchday)
+        return jsonify({'matchday': current_matchday})
     except Exception as e:
         # Log the exception to the console
         print(f"Error incrementing matchday: {e}")
@@ -77,7 +80,7 @@ def show_team(user_id):
 
     if isinstance(user_team, list) and len(user_team) > 0:
         team = user_team[0]  # Get team record
-        print("now printing my team", team)
+        # print("now printing my team", team)
 
         position_keys = [
             'guard',
@@ -105,11 +108,11 @@ def show_team(user_id):
                             teams[team_id] = team_response.data
 
 
-        print()
-        print()
-        print()
-        print("printing players", players)
-        print("printing teams", teams) 
+        # print()
+        # print()
+        # print()
+        # print("printing players", players)
+        # print("printing teams", teams) 
 
         return render_template(
             'pages/myteam.html',
@@ -138,7 +141,7 @@ def get_user_team(uid):
 def playershopteams():
     response = supabase.table('teamdata').select('*').execute()
     team_data = response.data if response.data else []
-    print(team_data)
+    # print(team_data)
     return render_template('pages/playershopteams.html', teams=team_data)
 
 
@@ -190,16 +193,23 @@ def add_to_team():
             return jsonify({'message': 'Not enough coins'}), 400
 
         # Update the user's team and coins
+        updated_coins = current_coins - player_price
         update_data = {
             player_position: player_id,
-            'coins': current_coins - player_price
+            'coins': updated_coins
         }
 
         response = supabase.from_('user_teams').update(update_data).eq('uid', user_id).execute()
         app.logger.debug(f'Update response: {response}')
 
         if response.data:
-            return jsonify({'message': 'Player added to your team successfully'}), 200
+            # Update the session with the new coin balance and team
+            flask_session['user_info']['user_team'][player_position] = player_id
+            flask_session['user_info']['user_team']['coins'] = updated_coins
+
+            flask_session.modified = True
+
+            return jsonify({'message': 'Player added to your team successfully', 'new_balance': updated_coins}), 200
         else:
             app.logger.error('Failed to add player to your team')
             return jsonify({'message': 'Failed to add player to your team', 'details': response.error}), 400
@@ -208,7 +218,9 @@ def add_to_team():
         app.logger.error(f'Error adding player to team: {e}')
         return jsonify({'message': 'Internal server error'}), 500
 
-# register and login pages
+
+# register, login, and logout
+
 @app.route('/register')
 def register():
     return render_template('pages/register.html')
@@ -217,58 +229,14 @@ def register():
 def login():
     return render_template('pages/login.html')
 
-# login endpoints
-
-# triggered on form submit in pages/register.html
 @app.route('/postregister', methods=['POST'])
-def postregister():
-    email = request.form.get('email')
-    password = request.form.get('password')
-    username = request.form.get('username')
-    session_response = supabase.auth.sign_up({ 
-        'email': email, 
-        'password': password, 
-        'options': {'data': {'username': username}}  # Store the username in the user's metadata
-    })
-    if session_response:
-        flask_session['user_info'] = {
-            'email': email,
-            'email_prefix': email.split('@')[0],
-            'username': username
-        }
-        return redirect(url_for('home'))
-    else:
-        return "Sign-up failed", 401
+def handlepostregister():
+    return postregister()
 
-# triggered on form submit in pages/login.html
 @app.route('/postlogin', methods=['POST'])
-def postlogin():
-    email = request.form.get('email')
-    password = request.form.get('password')
-    session_response = None # Initialize session
-    
-    try: 
-        session_response = supabase.auth.sign_in_with_password({ 'email': email, 'password': password })
-    except Exception as e: # catches if login fails -> "Invalid login credentials"
-        flash("Invalid email or password. Please try again.", "font-semibold text-red-500")
-        return redirect(url_for('login')) # Redirect to login.html
-    
-    if session_response:
-        print(session_response)
-        user = session_response.user
-        user_info = {
-            'email': user.email,
-            'email_prefix': email.split('@')[0],
-            'username': user.user_metadata.get('username', user.email),
-            'uid': user.id,
-        }
-        flask_session['user_info'] = user_info
-        return redirect(url_for('home'))
-    else:
-        flash("Login Failed", "error")
-        return "Login Failed", 401
+def handlepostlogin():
+    return postlogin()
 
-# logout route
 @app.route('/logout')
 def logout():
     flask_session.pop('user_info', None)

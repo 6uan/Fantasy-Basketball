@@ -40,13 +40,17 @@
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
       <a href="/login" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Login</a>
     {% endif %}
-      <!-- USER ICON -->
-      <div class="flex gap-1 items-center">
-        <p class="mt-1 text-lg font-light leading-[14px]">300</p>
-        <span class="size-6">
-          {% include 'components/gem.html' %}
+      <!-- USER Coins -->
+      {% if user_info %}
+      <div class="flex gap-1 p-2 rounded-md items-center hover:backdrop-blur-sm">
+          <p class="text-lg font-kanit font-light hover:font-normal leading-[14px] coin-balance">
+              {{ user_info.user_team.coins }}
+          </p>
+          <span class="size-5">
+              {% include 'components/gem.html' %}
           </span>
       </div>
+      {% endif %}   
     </li>
     </li>
   </ul>
