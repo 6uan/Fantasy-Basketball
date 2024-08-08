@@ -58,7 +58,7 @@ def process_games(matchday):
     if response.data:
         print(f"Successfully reset matchday points for all users")
     games = list(set([game['GAME_ID'] for game in data]))
-    games_for_matchday = games[(matchday - 1) * 15: matchday * 15]  # Only process 15 games for the current matchday
+    games_for_matchday = games[(matchday - 1) * 5: matchday * 5]  # Only process 15 games for the current matchday
     for game_id in games_for_matchday:
         game_data = [game for game in data if game['GAME_ID'] == game_id]
 

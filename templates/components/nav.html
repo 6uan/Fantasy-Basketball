@@ -20,14 +20,21 @@
       <!-- LINK TO INDEX.HTML -->
       <!-- <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl" >Home</a> -->
       <!-- LINK TO PLAY WITH FRIENDS -->
-      <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Play With Friends</a>
-      <!--LINK TO MATCHDAY-->
-      <p id="matchday"> Matchday {{ matchday }} </p>
-      <button class="size-5 cursor-pointer" id="increment-matchday-button">
-        {% include 'components/arrowright.html' %}
+      <a href="/" class="font-kanit font-light text-slate-600 hover:font-normal hover:drop-shadow-2xl">Play With Friends</a>
+
+
+      <div class="flex items-center p-1 gap-2 font-kanit font-light">
+        <!-- LINK TO RESET MATCHDAY -->
+      <button id="reset-matchday-button" class="size-5 cursor-pointer"> 
+        {% include 'components/restart.html' %}
       </button>
-      <!-- LINK TO RESET MATCHDAY -->
-      <span id="reset-matchday-button" class="text-slate-600 hover:text-black hover:drop-shadow-2xl cursor-pointer">Reset Matchday</span>
+      <p id="matchday"> Restart Simulation </p>
+    <!--LINK TO MATCHDAY-->
+    <button class="size-5 cursor-pointer" id="increment-matchday-button">
+      {% include 'components/arrowright.html' %}
+      </button>
+    <p id="matchday"> Simulate 5 Games {{ matchday }} </p>
+</div>  
     </li>
     <li class="flex items-center gap-5 ">
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
@@ -50,6 +57,13 @@
       <!-- USER Coins -->
       {% if user_info %}
       <div class="flex gap-1 p-2 rounded-md items-center hover:backdrop-blur-sm">
+          <p class="text-lg font-kanit font-light hover:font-normal leading-[14px] coin-balance">
+              {{ user_info.user_team.total_points }}
+          </p>
+          <span class="size-6 mt-1">
+              {% include 'components/points.html' %}
+          </span>
+          <div class="w-2"></div>
           <p class="text-lg font-kanit font-light hover:font-normal leading-[14px] coin-balance">
               {{ user_info.user_team.coins }}
           </p>
