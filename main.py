@@ -4,6 +4,7 @@ from config.supabase_client import supabase
 from dotenv import load_dotenv
 from config.usertables import get_user_team, update_coins, update_points, remove_player, add_player, insert_user_table
 from config.matchday import process_games
+from config.resetpoints import resetpoints
 load_dotenv()
 
 app = Flask(__name__)
@@ -34,6 +35,13 @@ def increment_matchday():
     global current_matchday
     process_games(current_matchday)  # Call the function to process games for the current matchday
     current_matchday += 1
+    return jsonify({"matchday": current_matchday})
+
+@app.route('/reset-matchday', methods=['POST'])
+def reset_matchday():
+    global current_matchday
+    current_matchday = 1
+    resetpoints()
     return jsonify({"matchday": current_matchday})
 
 # route for playerstats 
