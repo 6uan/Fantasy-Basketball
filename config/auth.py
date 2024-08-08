@@ -1,6 +1,6 @@
 from flask import request, redirect, url_for, session as flask_session, flash
 from config.supabase_client import supabase
-from config.usertables import get_user_team
+from config.usertables import get_user_team, insert_user_table
 
 
 # Function to register a user
@@ -15,6 +15,7 @@ def postregister():
     })
     if session_response:
         uid = session_response.user.id
+        insert_user_table(uid)
         user_team= get_user_team(uid)
         flask_session['user_info'] = {
             'email': email,
