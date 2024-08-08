@@ -34,27 +34,7 @@ def update_player_points(person_id, points, user_teams):
             ]
             if person_id in team_players:
                 update_points(user_id, points)
-
-def update_current_matchday(user_teams):
-    for user_team in user_teams:
-        user_id = user_team['uid']
-        team_players = [
-            user_team['center'],
-            user_team['center_forward'],
-            user_team['guard'],
-            user_team['forward_center'],
-            user_team['forward'],
-            user_team['guard_forward']
-        ]
-        matchday_points = 0 
-        for person_id in team_players:
-            if person_id:  # Check if person_id is valid (not None or empty)
-                response = supabase.table("playervalues").select("points_current_matchday").eq("person_id", person_id).execute()
-                if response.data and response.data[0]["points_current_matchday"] is not None:
-                    matchday_points += response.data[0]["points_current_matchday"]
-                else:
-                    matchday_points += 0
-        update_matchday_points(user_id, matchday_points)
+                update_matchday_points(user_id, points)
 
 
 # Function to fetch game data from the database
@@ -74,11 +54,11 @@ def fetch_game_data():
 def process_games(matchday):
     data = fetch_game_data()
     user_teams = fetch_user_teams()
-    print(len(data))
+    response = supabase.table("user_teams").update({"points_matchday": 0}).neq("uid", 0).execute()
+    if response.data:
+        print(f"Successfully reset matchday points for all users")
     games = list(set([game['GAME_ID'] for game in data]))
-    print(len(games))
     games_for_matchday = games[(matchday - 1) * 15: matchday * 15]  # Only process 15 games for the current matchday
-    print(len(games_for_matchday))
     for game_id in games_for_matchday:
         game_data = [game for game in data if game['GAME_ID'] == game_id]
 
@@ -98,5 +78,3 @@ def process_games(matchday):
                     points += 10
             print(f"{player_name} scored {points} points")
             update_player_points(person_id, points, user_teams)
-
-    update_current_matchday(user_teams)

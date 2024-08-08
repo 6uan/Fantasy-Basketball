@@ -3,14 +3,77 @@
 {% block title %} Leaderboards {% endblock %}
 {% block content %}
 
-<div class="flex w-full h-full items-center justify-center">
-  <div class="w-auto h-auto">
-    <img
-      class="object-contain h-auto scale-110"
-      src="{{ url_for('static', filename='images/WIP2.png') }}"
-      alt="header"
-    />
-  </div>
+<style>
+  .leaderboard-container {
+  margin: 20px;
+}
+
+.leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard th, .leaderboard td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.leaderboard th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+</style>
+
+<div class="leaderboard-container">
+  <h2>Overall Leaderboard</h2>
+  <table class="leaderboard">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Total Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if overall_leaderboard %}
+        {% for uid, points in overall_leaderboard.items() %}
+        <tr>
+          <td>{{ uid }}</td>
+          <td>{{ points }}</td>
+        </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="2">No data available</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+
+  <h2>Matchday Leaderboard</h2>
+  <table class="leaderboard">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Matchday Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if matchday_leaderboard %}
+        {% for uid, points in matchday_leaderboard.items() %}
+        <tr>
+          <td>{{ uid }}</td>
+          <td>{{ points }}</td>
+        </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="2">No data available</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
 </div>
 
 {% endblock %}
+

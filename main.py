@@ -6,6 +6,7 @@ from config.usertables import get_user_team, update_coins, update_points, remove
 from config.matchday import process_games
 from config.resetpoints import resetpoints
 from config.auth import postregister, postlogin
+from config.leaderboard import overall_leaderboard, matchday_leaderboard
 load_dotenv()
 
 app = Flask(__name__)
@@ -61,7 +62,9 @@ def playerstats():
 # route for leaderboards page
 @app.route('/leaderboards')
 def leaderboards():
-    return render_template('pages/leaderboards.html')
+    overall = overall_leaderboard()
+    matchday = matchday_leaderboard()
+    return render_template('pages/leaderboards.html', overall_leaderboard=overall, matchday_leaderboard=matchday)
 
 # route for gameschedule page
 @app.route('/gameschedule')
