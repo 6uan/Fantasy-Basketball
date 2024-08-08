@@ -31,10 +31,14 @@ def home():
 
 @app.route('/increment-matchday', methods=['POST'])
 def increment_matchday():
-    global current_matchday
-    process_games(current_matchday)  # Call the function to process games for the current matchday
-    current_matchday += 1
-    return jsonify({"matchday": current_matchday})
+    global matchday
+    try:
+        matchday += 1
+        return jsonify({'matchday': matchday})
+    except Exception as e:
+        # Log the exception to the console
+        print(f"Error incrementing matchday: {e}")
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 # route for playerstats 
 @app.route('/playerstats')

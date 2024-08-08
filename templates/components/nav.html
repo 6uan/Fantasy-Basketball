@@ -18,9 +18,9 @@
       <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Play With Friends</a>
       <!--LINK TO MATCHDAY-->
       <p id="matchday"> Matchday {{ matchday }} </p>
-      <div class="size-5" id="increment-matchday-button">
+      <button class="size-5 hover:cursor-pointer increment">
           {% include 'components/arrowright.html' %}
-      </div>
+      </button>
     </li>
     <li class="flex items-center gap-5 ">
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
@@ -51,14 +51,3 @@
     </li>
   </ul>
 </nav>
-<script>
-  document.getElementById("increment-matchday-button").addEventListener("click", function() {
-      fetch('/increment-matchday', {
-          method: 'POST'
-      })
-      .then(response => response.json())
-      .then(data => {
-          document.getElementById("matchday").innerText = `GAME: ${data.matchday}`;
-      });
-  });
-</script>
