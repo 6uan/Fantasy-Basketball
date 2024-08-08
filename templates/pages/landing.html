@@ -1,0 +1,99 @@
+<!-- Outer Container -->
+<div class="container flex flex-col justify-center mx-auto px-6 pt-20">
+  <!-- Header Section -->
+  <section class="flex justify-between px-14">
+    <!-- Text -->
+    <div class="flex flex-col justify-center">
+      <h1 class="font-kanit">
+        <span class="text-8xl font-bold">Rule</span>
+        <br />
+        <span class="text-8xl font-medium">the</span>
+        <span class="mx-3 text-8xl font-bold">Court</span>
+      </h1>
+      <div class="font-kanit font-light my-5">
+        <p>Compete with friends, track player stats, and enjoy live scoring</p>
+      </div>
+      <a href="/playershop">
+        <button
+          class="bg-slate-500 text-white w-full p-4 rounded-xl hover:bg-slate-700"
+        >
+          Get Started
+        </button>
+      </a>
+    </div>
+    <!-- Image -->
+    <div class="w-[800px] h-auto">
+      <img
+        class="object-contain h-auto pr-6 scale-110"
+        src="{{ url_for('static', filename='images/headernobg.png') }}"
+        alt="header"
+      />
+    </div>
+  </section>
+  <!-- Feature Section -->
+  <section class="mx-14 mt-7">
+    <h2 class="text-6xl text-center font-kanit font-semibold mx-4">
+      Features:
+    </h2>
+    <div class="container py-5 mx-auto text-center">
+      <div class="flex justify-between">
+        <!-- Live Scoring Card -->
+        <div
+          class="flex flex-col items-center justify-center px-5 w-80 h-56 bg-slate-300 rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105"
+        >
+          <div class="flex justify-center items-center size-24">
+            <div class="size-16 mb-4">
+              {% include 'components/ballicon.html' %}
+            </div>
+          </div>
+          <div class="h-24">
+            <h3 class="text-2xl font-semibold mb-2">Live Scoring</h3>
+            <p>Track live scores and see real-time updates.</p>
+          </div>
+        </div>
+        <!-- Player Stats Card -->
+        <div
+          class="flex flex-col items-center justify-center px-5 w-80 h-56 bg-slate-300 rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105"
+        >
+          <div class="flex justify-center items-center size-24">
+            <div class="size-[5rem] mt-2">
+              {% include 'components/staticon.html' %}
+            </div>
+          </div>
+          <div class="h-24">
+            <h3 class="text-2xl font-semibold mb-2">Player Stats</h3>
+            <p>Detailed player stats to make informed decisions.</p>
+          </div>
+        </div>
+        <!-- Custom Leagues Card -->
+        <div
+          class="flex flex-col items-center justify-center px-5 w-80 h-56 bg-slate-300 rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105"
+        >
+          <div class="flex justify-center items-center size-24">
+            <div class="size-[3.75rem] mb-4">
+              {% include 'components/customicon.html' %}
+            </div>
+          </div>
+          <div class="h-24">
+            <h3 class="text-2xl font-semibold mb-2">Custom Leagues</h3>
+            <p>Create and join custom leagues with friends.</p>
+          </div>
+        </div>
+        <!-- Easy to Use Card -->
+        <div
+          class="flex flex-col items-center justify-center px-5 w-80 h-56 bg-slate-300 rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105"
+        >
+          <div class="flex justify-center items-center size-24">
+            <div class="size-16 mb-3">
+              {% include 'components/navigationicon.html' %}
+            </div>
+          </div>
+          <div class="h-24">
+            <h3 class="text-2xl font-semibold mb-2">Easy to Use</h3>
+            <p>Intuitive interface for easy navigation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
