@@ -32,10 +32,14 @@ def home():
 
 @app.route('/increment-matchday', methods=['POST'])
 def increment_matchday():
-    global current_matchday
-    process_games(current_matchday)  # Call the function to process games for the current matchday
-    current_matchday += 1
-    return jsonify({"matchday": current_matchday})
+    global matchday
+    try:
+        matchday += 1
+        return jsonify({'matchday': matchday})
+    except Exception as e:
+        # Log the exception to the console
+        print(f"Error incrementing matchday: {e}")
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 @app.route('/reset-matchday', methods=['POST'])
 def reset_matchday():
@@ -82,7 +86,45 @@ def show_team(user_id):
     if isinstance(user_team, list) and len(user_team) > 0:
         team = user_team[0]  # Get team record
         print("now printing my team", team)
-        return render_template('pages/myteam.html', team = team)
+
+        position_keys = [
+            'guard',
+            'center',
+            'forward_center',
+            'forward',
+            'guard_forward',
+            'forward_guard'
+        ]
+
+        # Fetch player details for each position
+        players = {}
+        teams = {}
+        for position in position_keys:
+            player_id = team.get(position)
+            if player_id:
+                player_response = supabase.from_('playervalues').select('*').eq('person_id', player_id).single().execute()
+                if player_response.data:
+                    players[position] = player_response.data
+                    team_id = player_response.data['team_id']
+                    # Fetch team data for the player's team
+                    if team_id not in teams:
+                        team_response = supabase.from_('teamdata').select('*').eq('team_id', team_id).single().execute()
+                        if team_response.data:
+                            teams[team_id] = team_response.data
+
+
+        print()
+        print()
+        print()
+        print("printing players", players)
+        print("printing teams", teams) 
+
+        return render_template(
+            'pages/myteam.html',
+            team=team,
+            players=players,
+            teams=teams
+        )
     else:
         return redirect(url_for('home'))
 
@@ -119,7 +161,7 @@ def playershop_team(team_id):
     players_response = supabase.table('playervalues').select('*').eq('team_id', team_id).execute()
     players_data = players_response.data if players_response.data else []
 
-    return render_template('pages/playershopteam.html', team=team_data, players=players_data)
+    return render_template('pages/playershopplayers.html', team=team_data, players=players_data)
 
 
 # logic to add player to team ( IN PROGRESS )

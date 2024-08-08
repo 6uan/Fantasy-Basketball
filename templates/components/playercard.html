@@ -1,0 +1,55 @@
+<div
+  class="rounded-2xl card h-72 w-56 border-2 shadow-sm bg-slate-300 text-slate-600"
+>
+  <!-- player picture -->
+  <div
+    class="rounded-t-[14px] w-full h-[124px] bg-slate-50 flex justify-center"
+  >
+    <img
+      src="{{ player.person_picture }}"
+      alt="{{ player.team_name }} logo"
+      class="size-36 object-contain"
+    />
+  </div>
+
+  <!-- player name -->
+  <h1 class="font-black text-center pt-3">{{ player.player }}</h1>
+  <div class="flex justify-center items-center my-2">
+    <img
+      src="{{ player.team_logo }}"
+      alt="{{ player.team_name }} logo"
+      class="size-6 object-contain"
+    />
+    <p class="text-center">
+      <span>{{ player.position }}</span>
+      ·
+      <span>{{ player.overall }} OVR</span>
+    </p>
+  </div>
+
+  <!-- container for select and favorite button  -->
+  <div
+    class="flex justify-center h-10 items-center mx-5 my-2 gap-2 text-sm text-white font-bold py-2"
+  >
+    <button
+      class="flex items-center w-1/2 p-4 h-5 bg-slate-400 border-slate-600 border-2 hover:bg-slate-600 rounded-lg select-button"
+      data-player-id="{{ player.person_id }}"
+      data-player-position="{{ player.position }}"
+      data-player-price="{{ player.price }}"
+    >
+      Select
+    </button>
+    <button
+      class="flex items-center w-1/2 h-5 p-4 border-2 bg-slate-400 border-slate-600 hover:bg-slate-600 rounded-lg"
+    >
+      Favorite
+    </button>
+  </div>
+
+  <p class="text-center">
+    <span class="text-xl font-black">{{ player.price }}</span>
+    <span class="size-6 mb-2 inline-block align-middle">
+      {% include 'components/gem.html' %}
+    </span>
+  </p>
+</div>
