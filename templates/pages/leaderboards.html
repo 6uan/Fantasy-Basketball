@@ -5,27 +5,27 @@
 
 <style>
   .leaderboard-container {
-  margin: 20px;
-}
+    margin: 20px;
+  }
 
-.leaderboard {
-  width: 100%;
-  border-collapse: collapse;
-}
+  .leaderboard {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-.leaderboard th, .leaderboard td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+  .leaderboard th,
+  .leaderboard td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
 
-.leaderboard th {
-  background-color: #f2f2f2;
-  text-align: left;
-}
-
+  .leaderboard th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
 </style>
 
-<div class="leaderboard-container">
+<div class="container mx-auto p-6">
   <h2>Overall Leaderboard</h2>
   <table class="leaderboard">
     <thead>
@@ -35,17 +35,16 @@
       </tr>
     </thead>
     <tbody>
-      {% if overall_leaderboard %}
-        {% for uid, points in overall_leaderboard.items() %}
-        <tr>
-          <td>{{ uid }}</td>
-          <td>{{ points }}</td>
-        </tr>
-        {% endfor %}
-      {% else %}
-        <tr>
-          <td colspan="2">No data available</td>
-        </tr>
+      {% if overall_leaderboard %} {% for uid, points in
+      overall_leaderboard.items() %}
+      <tr>
+        <td>{{ uid }}</td>
+        <td>{{ points }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="2">No data available</td>
+      </tr>
       {% endif %}
     </tbody>
   </table>
@@ -59,21 +58,19 @@
       </tr>
     </thead>
     <tbody>
-      {% if matchday_leaderboard %}
-        {% for uid, points in matchday_leaderboard.items() %}
-        <tr>
-          <td>{{ uid }}</td>
-          <td>{{ points }}</td>
-        </tr>
-        {% endfor %}
-      {% else %}
-        <tr>
-          <td colspan="2">No data available</td>
-        </tr>
+      {% if matchday_leaderboard %} {% for uid, points in
+      matchday_leaderboard.items() %}
+      <tr>
+        <td>{{ uid }}</td>
+        <td>{{ points }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="2">No data available</td>
+      </tr>
       {% endif %}
     </tbody>
   </table>
 </div>
 
 {% endblock %}
-

@@ -49,8 +49,21 @@ def increment_matchday():
 def reset_matchday():
     global current_matchday
     current_matchday = 1
-    resetpoints()
-    return jsonify({"matchday": current_matchday})
+
+    try:
+        # Reset points in the database
+        resetpoints()
+
+        # Reset points in the session if the user is logged in
+        if 'user_info' in flask_session:
+            flask_session['user_info']['user_team']['points_matchday'] = 0
+            flask_session['user_info']['user_team']['total_points'] = 0
+            flask_session.modified = True
+
+        return jsonify({"message": "Matchday points reset successfully", "matchday": current_matchday}), 200
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"message": "Internal server error"}), 500
 
 # route for playerstats 
 @app.route('/playerstats')
@@ -196,7 +209,8 @@ def add_to_team():
 
         user_team = user_response.data
         current_coins = user_team.get('coins', 0)
-        app.logger.debug(f'Current coins: {current_coins}')
+        current_points = user_team.get('total_points', 0)
+        app.logger.debug(f'Current coins: {current_coins}, Current points: {current_points}')
 
         # Check if the user can afford the player
         if current_coins < player_price:
@@ -205,6 +219,7 @@ def add_to_team():
 
         # Update the user's team and coins
         updated_coins = current_coins - player_price
+        updated_points = current_points 
         update_data = {
             player_position: player_id,
             'coins': updated_coins
@@ -217,10 +232,18 @@ def add_to_team():
             # Update the session with the new coin balance and team
             flask_session['user_info']['user_team'][player_position] = player_id
             flask_session['user_info']['user_team']['coins'] = updated_coins
+            flask_session['user_info']['user_team']['total_points'] = updated_points
 
+            # Ensure the session is saved
             flask_session.modified = True
 
-            return jsonify({'message': 'Player added to your team successfully', 'new_balance': updated_coins}), 200
+            return jsonify({
+                'message': 'Player added to your team successfully',
+                'new_balance': {
+                    'coins': updated_coins,
+                    'points': updated_points
+                }
+            }), 200
         else:
             app.logger.error('Failed to add player to your team')
             return jsonify({'message': 'Failed to add player to your team', 'details': response.error}), 400
@@ -228,7 +251,6 @@ def add_to_team():
     except Exception as e:
         app.logger.error(f'Error adding player to team: {e}')
         return jsonify({'message': 'Internal server error'}), 500
-
 
 # register, login, and logout
 

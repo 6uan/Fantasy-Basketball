@@ -20,7 +20,7 @@
       <!-- LINK TO INDEX.HTML -->
       <!-- <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl" >Home</a> -->
       <!-- LINK TO PLAY WITH FRIENDS -->
-      <a href="/" class="font-kanit text-lg font-light text-slate-600 hover:font-normal hover:drop-shadow-2xl">Play With Friends</a>
+      <a href="/" class="font-kanit text-lg font-light hover:border-b-2 border-b-slate-600 text-slate-600 hover:font-normal hover:drop-shadow-2xl">Play With Friends</a>
 
     </li>
     <li class="flex items-center gap-5 ">
@@ -34,7 +34,7 @@
          </div>
         <!-- LOGOUT BUTTON -->
          <div class="hidden text-lg group-hover:block w-40 hover:font-normal hover:drop-shadow-2xl text-right">
-            <a href="/logout" class=" text-slate-600 font-kanit">Logout</a>
+            <a href="/logout" class=" text-slate-600 font-kanit border-b-2 border-b-slate-600">Logout</a>
          </div>
       </div>
     {% else %}
@@ -44,7 +44,7 @@
       <!-- USER Coins -->
       {% if user_info %}
       <div class="flex gap-1 p-2 rounded-md items-center hover:backdrop-blur-sm">
-          <p class="text-lg text-slate-600  font-kanit font-light hover:font-normal leading-[14px] coin-balance">
+          <p class="text-lg text-slate-600  font-kanit font-light hover:font-normal leading-[14px] .coin-balance.points">
               {{ user_info.user_team.total_points }}
           </p>
           <span class="size-6">

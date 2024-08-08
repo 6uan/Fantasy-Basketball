@@ -16,5 +16,3 @@ def resetpoints():
     response = supabase.table("user_teams").update({"total_points": 0}).neq("uid", 0).execute()
     if response.data:
         print(f"Successfully reset total points for all users")
-
-resetpoints()

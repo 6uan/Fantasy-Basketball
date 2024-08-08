@@ -4,6 +4,10 @@ console.log('Working')
 document.addEventListener('DOMContentLoaded', () => {
   const selectButtons = document.querySelectorAll('.select-button')
 
+  const roundToOneDecimal = (value) => {
+    return Math.round(value * 10) / 10
+  }
+
   selectButtons.forEach((button) => {
     button.addEventListener('click', async (e) => {
       e.preventDefault()
@@ -26,10 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok) {
           alert(result.message)
-          // Update the displayed coin balance
-          const coinElement = document.querySelector('.coin-balance')
+          // Update the displayed coin balance and points
+          const coinElement = document.querySelector('.coin-balance.coins')
+          const pointsElement = document.querySelector('.coin-balance.points')
+
           if (coinElement) {
-            coinElement.textContent = result.new_balance
+            coinElement.textContent = roundToOneDecimal(
+              result.new_balance.coins,
+            )
+          }
+
+          if (pointsElement) {
+            pointsElement.textContent = roundToOneDecimal(
+              result.new_balance.points,
+            )
           }
         } else {
           alert(result.message)
@@ -39,4 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
   })
+
+  document
+    .getElementById('reset-matchday-button')
+    .addEventListener('click', function () {
+      fetch('/reset-matchday', {
+        method: 'POST',
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          alert(data.message)
+          // Reset points on the frontend
+          const pointsElement = document.querySelector('.coin-balance.points')
+          if (pointsElement) {
+            pointsElement.textContent = 0
+          }
+          document.getElementById(
+            'matchday',
+          ).innerText = `Matchday ${data.matchday}`
+        })
+        .catch((error) => console.error('Error:', error))
+    })
 })

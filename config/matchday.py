@@ -1,5 +1,26 @@
 from config.supabase_client import supabase
 from config.usertables import update_points, update_matchday_points
+from flask import session as flask_session
+
+def update_points_in_session(user_id, points):
+    user_info = flask_session.get('user_info', {})
+    user_team = user_info.get('user_team', {})
+
+    # Update total points
+    current_total_points = user_team.get('total_points', 0)
+    new_total_points = current_total_points + points
+    user_team['total_points'] = new_total_points
+
+    # Update matchday points
+    current_matchday_points = user_team.get('points_matchday', 0)
+    new_matchday_points = current_matchday_points + points
+    user_team['points_matchday'] = new_matchday_points
+
+    # Update the session
+    user_info['user_team'] = user_team
+    flask_session['user_info'] = user_info
+    flask_session.modified = True
+
 
 def fetch_user_teams():
     try:
@@ -35,7 +56,8 @@ def update_player_points(person_id, points, user_teams):
             if person_id in team_players:
                 update_points(user_id, points)
                 update_matchday_points(user_id, points)
-
+                if user_id == flask_session.get('user_info', {}).get('uid'):
+                    update_points_in_session(user_id, points)
 
 # Function to fetch game data from the database
 def fetch_game_data():
