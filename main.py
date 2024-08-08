@@ -4,6 +4,7 @@ from config.supabase_client import supabase
 from dotenv import load_dotenv
 from config.usertables import get_user_team, update_coins, update_points, remove_player, add_player, insert_user_table
 from config.matchday import process_games
+from config.resetpoints import resetpoints
 from config.auth import postregister, postlogin
 load_dotenv()
 
@@ -35,13 +36,20 @@ def home():
 def increment_matchday():
     global current_matchday
     try:
-        current_matchday += 1
         process_games(current_matchday)
+        current_matchday += 1
         return jsonify({'matchday': current_matchday})
     except Exception as e:
         # Log the exception to the console
         print(f"Error incrementing matchday: {e}")
         return jsonify({'error': 'Internal Server Error'}), 500
+
+@app.route('/reset-matchday', methods=['POST'])
+def reset_matchday():
+    global current_matchday
+    current_matchday = 1
+    resetpoints()
+    return jsonify({"matchday": current_matchday})
 
 # route for playerstats 
 @app.route('/playerstats')

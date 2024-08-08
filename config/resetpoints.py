@@ -1,4 +1,4 @@
-from supabase_client import supabase
+from config.supabase_client import supabase
 
 def resetpoints():
     response = supabase.table("playervalues").update({"total_points": 0}).neq("person_id", 0).execute()

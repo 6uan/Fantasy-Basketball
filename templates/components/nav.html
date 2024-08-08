@@ -1,3 +1,8 @@
+<style>
+  .cursor-pointer {
+    cursor: pointer;
+  }
+</style>
 <nav class="flex justify-center bg-slate-300 border-b-2 border-slate-500 w-full h-14 px-10 font-semibold">
   <ul class="flex h-14 justify-between items-center w-7/12">
     <li class="flex items-center gap-5">
@@ -18,9 +23,11 @@
       <a href="/" class="text-slate-600 hover:text-black hover:drop-shadow-2xl">Play With Friends</a>
       <!--LINK TO MATCHDAY-->
       <p id="matchday"> Matchday {{ matchday }} </p>
-      <button class="size-5 hover:cursor-pointer increment">
-          {% include 'components/arrowright.html' %}
+      <button class="size-5 cursor-pointer" id="increment-matchday-button">
+        {% include 'components/arrowright.html' %}
       </button>
+      <!-- LINK TO RESET MATCHDAY -->
+      <span id="reset-matchday-button" class="text-slate-600 hover:text-black hover:drop-shadow-2xl cursor-pointer">Reset Matchday</span>
     </li>
     <li class="flex items-center gap-5 ">
       <!-- BUTTON TO TRIGGER LOGIN MODAL -->
@@ -55,3 +62,23 @@
     </li>
   </ul>
 </nav>
+<script>
+  document.getElementById("increment-matchday-button").addEventListener("click", function() {
+      fetch('/increment-matchday', {
+          method: 'POST'
+      })
+      .then(response => response.json())
+      .then(data => {
+          document.getElementById("matchday").innerText = `GAME: ${data.matchday}`;
+      });
+  });
+  document.getElementById("reset-matchday-button").addEventListener("click", function() {
+    fetch('/reset-matchday', {
+      method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("matchday").innerText = `Matchday ${data.matchday}`;
+    });
+  });
+</script>
