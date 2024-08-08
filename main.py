@@ -168,7 +168,6 @@ def playershopteams():
     # print(team_data)
     return render_template('pages/playershopteams.html', teams=team_data)
 
-
 # route for players of a specific team
 @app.route('/playershop/<team_id>')
 def playershop_team(team_id):
@@ -253,7 +252,6 @@ def add_to_team():
         return jsonify({'message': 'Internal server error'}), 500
 
 # register, login, and logout
-
 @app.route('/register')
 def register():
     return render_template('pages/register.html')

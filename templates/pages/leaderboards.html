@@ -26,51 +26,60 @@
 </style>
 
 <div class="container mx-auto p-6">
-  <h2>Overall Leaderboard</h2>
-  <table class="leaderboard">
-    <thead>
-      <tr>
-        <th>User ID</th>
-        <th>Total Points</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% if overall_leaderboard %} {% for uid, points in
-      overall_leaderboard.items() %}
-      <tr>
-        <td>{{ uid }}</td>
-        <td>{{ points }}</td>
-      </tr>
-      {% endfor %} {% else %}
-      <tr>
-        <td colspan="2">No data available</td>
-      </tr>
-      {% endif %}
-    </tbody>
-  </table>
+  <h1 class="p-5 text-center text-4xl font-semibold font-kanit">
+    Overall Leaderboard
+  </h1>
+  <div class="mx-auto w-[65%]">
+    <table class="leaderboard">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Total Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if overall_leaderboard %} {% for uid, points in
+        overall_leaderboard.items() %}
+        <tr>
+          <td>{{ uid }}</td>
+          <td>{{ points }}</td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="2">No data available</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
 
-  <h2>Matchday Leaderboard</h2>
-  <table class="leaderboard">
-    <thead>
-      <tr>
-        <th>User ID</th>
-        <th>Matchday Points</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% if matchday_leaderboard %} {% for uid, points in
-      matchday_leaderboard.items() %}
-      <tr>
-        <td>{{ uid }}</td>
-        <td>{{ points }}</td>
-      </tr>
-      {% endfor %} {% else %}
-      <tr>
-        <td colspan="2">No data available</td>
-      </tr>
-      {% endif %}
-    </tbody>
-  </table>
+  <h1 class="p-5 text-center text-4xl font-semibold font-kanit">
+    Matchday Leaderboard
+  </h1>
+
+  <div class="mx-auto w-[65%]">
+    <table class="leaderboard">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Matchday Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if matchday_leaderboard %} {% for uid, points in
+        matchday_leaderboard.items() %}
+        <tr>
+          <td>{{ uid }}</td>
+          <td>{{ points }}</td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="2">No data available</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 {% endblock %}
