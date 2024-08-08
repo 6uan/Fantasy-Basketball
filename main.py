@@ -3,11 +3,13 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from config.supabase_client import supabase
 from dotenv import load_dotenv
 from config.usertables import get_user_team, update_coins, update_points, remove_player, add_player, insert_user_table
+from config.matchday import process_games
 load_dotenv()
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
+current_matchday = 1
 
 # runs before every request to get user info
 @app.before_request
@@ -23,8 +25,16 @@ def inject_user_info():
 @app.route('/')
 def home():
     print(flask_session)
+    global current_matchday
     # 518295b1-b9c0-41b0-9748-b2d876d3655f
-    return render_template('index.html')
+    return render_template('index.html', matchday=current_matchday)
+
+@app.route('/increment-matchday', methods=['POST'])
+def increment_matchday():
+    global current_matchday
+    process_games(current_matchday)  # Call the function to process games for the current matchday
+    current_matchday += 1
+    return jsonify({"matchday": current_matchday})
 
 # route for playerstats 
 @app.route('/playerstats')
